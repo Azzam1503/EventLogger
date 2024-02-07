@@ -45,7 +45,9 @@ const updateEvent = async (req, res) => {
 
     const event = await Event.findById(id);
 
-    return res.status(200).json("Event update Successfully", event);
+    return res
+      .status(200)
+      .json({ message: "Event update Successfully", event });
   } catch (error) {
     return res.json(411).json({ message: "Error while updating event" });
   }
@@ -57,7 +59,9 @@ const deleteEvent = async (req, res) => {
 
     const event = await Event.findByIdAndDelete(id);
 
-    return res.status(200).json("Event deleted Successfully", event);
+    return res
+      .status(200)
+      .json({ message: "Event deleted Successfully", event });
   } catch (error) {
     return res.json(411).json({ message: "Error while updating event" });
   }
