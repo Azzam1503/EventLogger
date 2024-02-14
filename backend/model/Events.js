@@ -14,6 +14,9 @@ const eventsSchema = new mongosee.Schema(
       type: String,
       required: true,
     },
+    imageUrl: {
+      type: String,
+    },
     // dateTime: {
     //   type: String,
     //   required: true,

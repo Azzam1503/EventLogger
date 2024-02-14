@@ -1,4 +1,5 @@
 const Event = require("../model/Events");
+const uploadOnCloudinary = require("../utils/cloudinary");
 
 const allEvents = async (req, res) => {
   try {
@@ -15,10 +16,17 @@ const allEvents = async (req, res) => {
 const craeteEvent = async (req, res) => {
   try {
     const { title, description, venue } = req.body;
+
+    let eventImage;
+    if (req.file != undefined) {
+      eventImage = req.file.path;
+    }
+    const img = await uploadOnCloudinary(eventImage);
     const newEvent = await Event.create({
       title,
       description,
       venue,
+      imageUrl: img.secure_url,
     });
 
     return res
