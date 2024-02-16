@@ -8,6 +8,7 @@ const Events = () => {
     description: "",
     venue: "",
   });
+  const [image, setImage] = useState("");
 
   const [updateFormData, setUpdateFormData] = useState({
     id: null,
@@ -95,13 +96,29 @@ const Events = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("title", eventFormData.title);
+    formData.append("description", eventFormData.description);
+    formData.append("venue", eventFormData.venue);
+    formData.append("event-pic", image);
     try {
       const response = await axios.post(
         "http://localhost:3000/event/create-event",
-        eventFormData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       console.log(response);
       setEvents([...events, response.data.newEvent]);
+      setEventFormData({
+        title: "",
+        description: "",
+        venue: "",
+      });
+      setImage("");
     } catch (error) {
       console.log(error);
     }
@@ -115,6 +132,12 @@ const Events = () => {
           <h3>{event.title}</h3>
           <h5>{event.description}</h5>
           <h6>{event.venue}</h6>
+          <img
+            src={event.imageUrl}
+            alt="image"
+            style={{ width: "500px", height: "400px" }}
+          />
+          <br />
           <button onClick={() => toggleUpdate(event)}>Update</button>
           <button onClick={() => handleDelete(event._id)}>Delete</button>
         </div>
@@ -145,6 +168,12 @@ const Events = () => {
             placeholder="venue"
             required
             onChange={handleFormDataChange}
+          />
+          <input
+            type="file"
+            name="image"
+            required
+            onChange={(e) => setImage(e.target.files[0])}
           />
           <button type="submit">Create Event</button>
         </form>
