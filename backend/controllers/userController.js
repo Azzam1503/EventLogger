@@ -1,11 +1,16 @@
 const User = require("../model/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const uploadOnCloudinary = require("../utils/cloudinary");
 const createUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-
+    const { fullName, email, password } = req.body;
+    let avatarPic;
+    console.log(req.file);
+    if (req.file != undefined) {
+      avatarPic = await uploadOnCloudinary(req.file.path);
+      console.log(avatarPic);
+    }
     const ifAlreadyExists = await User.findOne({ email });
     if (ifAlreadyExists) {
       return res.status(411).json({ message: "Email already taken" });
@@ -13,9 +18,10 @@ const createUser = async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     const newUser = await User.create({
-      name,
+      fullName,
       email,
       password: hashedPassword,
+      imageUrl: avatarPic?.secure_url || "undefined",
     });
 
     return res

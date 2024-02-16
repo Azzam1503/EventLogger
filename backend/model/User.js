@@ -2,7 +2,7 @@ const mongosee = require("mongoose");
 
 const userSchema = new mongosee.Schema(
   {
-    name: {
+    fullName: {
       type: String,
       required: true,
     },
@@ -13,6 +13,9 @@ const userSchema = new mongosee.Schema(
     password: {
       type: String,
       required: true,
+    },
+    imageUrl: {
+      type: String,
     },
   },
   {

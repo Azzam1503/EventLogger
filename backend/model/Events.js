@@ -17,6 +17,11 @@ const eventsSchema = new mongosee.Schema(
     imageUrl: {
       type: String,
     },
+    userId: {
+      type: mongosee.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     // dateTime: {
     //   type: String,
     //   required: true,

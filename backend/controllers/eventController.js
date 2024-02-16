@@ -19,14 +19,13 @@ const craeteEvent = async (req, res) => {
 
     let eventImage;
     if (req.file != undefined) {
-      eventImage = req.file.path;
+      eventImage = await uploadOnCloudinary(eventImage);
     }
-    const img = await uploadOnCloudinary(eventImage);
     const newEvent = await Event.create({
       title,
       description,
       venue,
-      imageUrl: img.secure_url,
+      imageUrl: img?.secure_url || "undefined",
     });
 
     return res
