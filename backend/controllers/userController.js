@@ -83,9 +83,25 @@ const checkAuth = (req, res) => {
     res.sendStatus(400);
   }
 };
+
+const getUser = async (req, res) => {
+  console.log(req.user);
+  try {
+    return res.status(200).json({ user: req.user });
+  } catch (error) {
+    return res.status(401).json({ message: "Error while finding the user" });
+  }
+};
+
+const updateUser = async () => {};
+
+const updateAvatar = async () => {};
 module.exports = {
   createUser,
   loginUser,
   logoutUser,
   checkAuth,
+  getUser,
+  updateAvatar,
+  updateUser,
 };

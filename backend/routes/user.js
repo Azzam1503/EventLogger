@@ -8,5 +8,12 @@ router.post("/register", upload.single("avatar"), userController.createUser);
 router.post("/sign-in", userController.loginUser);
 router.post("/logout", userController.logoutUser);
 router.get("/check-auth", authMiddleware, userController.checkAuth);
+router.get("/profile", authMiddleware, userController.getUser);
+router.get("/profile-update", authMiddleware, userController.updateUser);
+router.get(
+  "/profile-avatar-update",
+  authMiddleware,
+  userController.updateAvatar
+);
 
 module.exports = router;
