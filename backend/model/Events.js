@@ -28,8 +28,8 @@ const eventsSchema = new mongosee.Schema(
     // },
     // speakers: {
     //   type: String,
-    //   required: true,
     // },
+    // guests: []
   },
   {
     timestamps: true,

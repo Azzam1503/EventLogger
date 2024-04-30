@@ -96,12 +96,14 @@ const Events = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
     const formData = new FormData();
     formData.append("title", eventFormData.title);
     formData.append("description", eventFormData.description);
     formData.append("venue", eventFormData.venue);
     formData.append("event-pic", image);
-    try {
+    console.log(image)
       const response = await axios.post(
         "http://localhost:3000/event/create-event",
         formData,
@@ -109,6 +111,7 @@ const Events = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          withCredentials: true
         }
       );
       console.log(response);

@@ -8,6 +8,7 @@ router.get("/", eventController.allEvents);
 router.post(
   "/create-event",
   upload.single("event-pic"),
+  authMiddleware,
   eventController.craeteEvent
 );
 router.put("/update-event/:id", eventController.updateEvent);

@@ -45,6 +45,7 @@ const Signup = () => {
       formData.append("fullName", signupFormData.fullName);
       formData.append("email", signupFormData.email);
       formData.append("password", signupFormData.password);
+      console.log(image)
       const response = await axios.post(
         "http://localhost:3000/user/register",
         formData,

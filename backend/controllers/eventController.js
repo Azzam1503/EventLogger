@@ -19,19 +19,22 @@ const craeteEvent = async (req, res) => {
 
     let eventImage;
     if (req.file != undefined) {
-      eventImage = await uploadOnCloudinary(eventImage);
+      eventImage = await uploadOnCloudinary(req.file.path);
+      console.log(eventImage)
     }
     const newEvent = await Event.create({
       title,
       description,
       venue,
-      imageUrl: img?.secure_url || "undefined",
+      imageUrl: eventImage?.secure_url || "undefined",
+      userId: req.user._id
     });
 
     return res
       .status(200)
       .json({ message: "event created Successfully", newEvent });
   } catch (error) {
+    console.log("error while creating event",error)
     return res.status(501).json({ message: "Error while creating the event" });
   }
 };

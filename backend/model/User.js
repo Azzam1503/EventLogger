@@ -1,4 +1,5 @@
 const mongosee = require("mongoose");
+const Events = require("./Events");
 
 const userSchema = new mongosee.Schema(
   {
@@ -17,6 +18,16 @@ const userSchema = new mongosee.Schema(
     imageUrl: {
       type: String,
     },
+    events: [
+      {
+        type: mongosee.Schema.Types.ObjectId,
+        ref: "Events",
+    }
+    ],
+    isAdmin: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,
