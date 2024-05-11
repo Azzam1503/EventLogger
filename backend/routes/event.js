@@ -12,7 +12,7 @@ router.post(
   eventController.craeteEvent
 );
 router.get("/get-event/:id", eventController.getEvent);
-router.put("/update-event/:id", eventController.updateEvent);
+router.put("/update-event/:id", upload.single("imageUrl"), eventController.updateEvent);
 router.delete("/delete-event/:id", eventController.deleteEvent);
 
 module.exports = router;

@@ -43,15 +43,24 @@ const craeteEvent = async (req, res) => {
 
 const updateEvent = async (req, res) => {
   try {
-    const { title, description, venue } = req.body;
+    const { title, description, venue, speakers, date, time } = req.body;
+    let updatedImage;
+    if(req.file != undefined){
+      updatedImage = await uploadOnCloudinary(req.file.path);
+      console.log(updatedImage);
+    }
+    
     const { id } = req.params;
-
     await Event.findByIdAndUpdate(
       { _id: id },
       {
         title,
         description,
         venue,
+        date,
+        time,
+        speakers,
+        imageUrl: updatedImage?.secure_url
       }
     );
 
