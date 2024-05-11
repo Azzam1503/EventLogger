@@ -93,9 +93,6 @@ const CreateEvent = () => {
     }
   };
 
-  const check = () => {
-    console.log(eventFormData)
-  }
   const appendSpeaker = () => {
     const newSpeaker = {
       id: parseInt(speakers.length+1),
@@ -103,12 +100,18 @@ const CreateEvent = () => {
       about: speaker.about
     }
     setSpeakers((prevSpeaker) => [...prevSpeaker, newSpeaker]);
-    setSpeaker((prevSpeaker) => prevSpeaker = {
+    setSpeaker({
       name: "",
       about: ""
     });
   }
 
+  const deleteSpeaker = (id) => {
+    const filtered = speakers.filter((speaker) => speaker.id != id);
+    setSpeakers(filtered);
+  }
+
+  
   return (
     <div>
       Event
@@ -184,23 +187,18 @@ const CreateEvent = () => {
 
               <button type="button" onClick={appendSpeaker}>Add speaker</button>
           </div>
-          <div>{speakers.map((speaker) => (
-              <div key={speaker.id}>
+          <ul>{speakers.map((speaker) => (
+              <li key={speaker.id}>
                 {speaker.name}
                 {speaker.about}
-              </div>
-          ))}</div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+                <button type="button" onClick={() => deleteSpeaker(speaker.id)}>Delete</button>
+              </li>
+          ))}</ul>
           <br />
           <br />
           <br />
           <button type="submit">Create Event</button>
         </form>
-        <button onClick={check}>check</button>
     </div>
   );
 };
