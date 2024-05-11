@@ -22,14 +22,24 @@ const eventsSchema = new mongosee.Schema(
       ref: "User",
       required: true,
     },
-    // dateTime: {
-    //   type: String,
-    //   required: true,
-    // },
-    // speakers: {
-    //   type: String,
-    // },
-    // guests: []
+    date: {
+      type: String,
+    },
+    time:{
+      type: String
+    },
+    speakers: [{
+      name: {
+        type: String
+      },
+      about:{
+        type: String
+      }
+    }],
+    showOnHomagePage:{
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

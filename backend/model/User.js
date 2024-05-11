@@ -23,11 +23,7 @@ const userSchema = new mongosee.Schema(
         type: mongosee.Schema.Types.ObjectId,
         ref: "Events",
     }
-    ],
-    isAdmin: {
-      type: Boolean,
-      default: false
-    }
+    ]
   },
   {
     timestamps: true,

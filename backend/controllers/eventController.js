@@ -15,19 +15,21 @@ const allEvents = async (req, res) => {
 
 const craeteEvent = async (req, res) => {
   try {
-    const { title, description, venue } = req.body;
-
+    const { title, description, venue, speakers, date, time } = req.body;
+    console.log(req.body.speakers);
     let eventImage;
     if (req.file != undefined) {
       eventImage = await uploadOnCloudinary(req.file.path);
-      console.log(eventImage)
     }
     const newEvent = await Event.create({
       title,
       description,
       venue,
       imageUrl: eventImage?.secure_url || "undefined",
-      userId: req.user._id
+      date,
+      time,
+      userId: req.user._id,
+      speakers
     });
 
     return res
@@ -73,13 +75,26 @@ const deleteEvent = async (req, res) => {
       .status(200)
       .json({ message: "Event deleted Successfully", event });
   } catch (error) {
-    return res.json(411).json({ message: "Error while updating event" });
+    return res.json(411).json({ message: "Error while deleting event" });
   }
 };
+
+ const getEvent = async (req, res) => {
+  try {
+    const {id} = req.params;
+
+    const event = await Event.findById(id);
+
+    return res.status(200).json({message: "Event found successfully", event})
+  } catch (error) {
+    return res.json(411).json({ message: "Error while finding event" });
+  }
+}
 
 module.exports = {
   allEvents,
   craeteEvent,
   updateEvent,
   deleteEvent,
+  getEvent
 };
