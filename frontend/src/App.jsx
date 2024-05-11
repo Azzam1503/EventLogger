@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/create-event" element={<CreateEvent />} />
-          <Route path="/update-event" element={<UpdateEvent />} />
+          <Route path="/update-event/:id" element={<UpdateEvent />} />
           <Route path="/event/:id" element={<Event />} />
         </Routes>
       </BrowserRouter>

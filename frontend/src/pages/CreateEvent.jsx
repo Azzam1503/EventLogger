@@ -10,6 +10,7 @@ const CreateEvent = () => {
     time: ""
   });
   const [image, setImage] = useState("");
+  console.log(image)
   const [speaker, setSpeaker] = useState({
     id: null,
     name: "",
@@ -114,7 +115,6 @@ const CreateEvent = () => {
   
   return (
     <div>
-      Event
         <form onSubmit={handleSubmit}>
           <h1>Create Event</h1>
           <input

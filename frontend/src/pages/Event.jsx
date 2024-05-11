@@ -21,6 +21,9 @@ const Event = () => {
     <div>
         <h1>{event.title}</h1>
         <p>{event.description}</p>
+        <h3>{event.venue}</h3>
+        <p>{event.data}</p>
+        <p>{event.time}</p>
         <img src={event?.imageUrl} />
         {event?.speakers && event.speakers.map((speaker) => (
             <div key={speaker._id}>
