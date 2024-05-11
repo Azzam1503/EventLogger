@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import UserProfile from "./pages/UserProfile";
 import CreateEvent from "./pages/CreateEvent";
 import UpdateEvent from "./pages/UpdateEvent";
+import Event from "./pages/Event";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/update-event" element={<UpdateEvent />} />
+          <Route path="/event/:id" element={<Event />} />
         </Routes>
       </BrowserRouter>
     </>

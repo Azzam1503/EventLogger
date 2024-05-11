@@ -6,13 +6,26 @@ const CreateEvent = () => {
     title: "",
     description: "",
     venue: "",
+    date: "",
+    time: ""
   });
   const [image, setImage] = useState("");
+  const [speaker, setSpeaker] = useState({
+    id: null,
+    name: "",
+    about: ""
+  })
+  const [speakers, setSpeakers] = useState([]);
 
   const handleFormDataChange = (e) => {
     const { name, value } = e.target;
     setEventFormData((prevForm) => ({ ...prevForm, [name]: value }));
   };
+
+  const speakerDataChange = (e) => {
+    const {name, value} = e.target;
+    setSpeaker((prevData) => ({...prevData, [name]: value}));
+  }
 
  
 
@@ -48,6 +61,13 @@ const CreateEvent = () => {
     formData.append("description", eventFormData.description);
     formData.append("venue", eventFormData.venue);
     formData.append("event-pic", image);
+    formData.append("date", eventFormData.date);
+    formData.append("time", eventFormData.time);
+
+    for(let i = 0; i<speakers.length; i++){
+      formData.append(`speakers[${i}][name]`, speakers[i].name);
+      formData.append(`speakers[${i}][about]`, speakers[i].about);
+    }
 
       const response = await axios.post(
         "http://localhost:3000/event/create-event",
@@ -64,12 +84,30 @@ const CreateEvent = () => {
         title: "",
         description: "",
         venue: "",
+        date: "",
+        time: ""
       });
       setImage("");
     } catch (error) {
       console.log(error);
     }
   };
+
+  const check = () => {
+    console.log(eventFormData)
+  }
+  const appendSpeaker = () => {
+    const newSpeaker = {
+      id: parseInt(speakers.length+1),
+      name: speaker.name,
+      about: speaker.about
+    }
+    setSpeakers((prevSpeaker) => [...prevSpeaker, newSpeaker]);
+    setSpeaker((prevSpeaker) => prevSpeaker = {
+      name: "",
+      about: ""
+    });
+  }
 
   return (
     <div>
@@ -100,14 +138,69 @@ const CreateEvent = () => {
             required
             onChange={handleFormDataChange}
           />
+          <br />
           <input
             type="file"
             name="image"
             required
             onChange={(e) => setImage(e.target.files[0])}
           />
+          <br />
+           <input
+          type="date"
+          name="date"
+          value={eventFormData.date}
+          required
+          onChange={handleFormDataChange}
+        />
+        {/* Time input */}
+        <input
+          type="time"
+          name="time"
+          value={eventFormData.time}
+          required
+          onChange={handleFormDataChange}
+        />
+          <div>
+            <br />
+            <h2>Add speakers</h2>
+            <label htmlFor="speakerName">Name of speaker</label>
+            <br />
+            <input 
+              type="text" 
+              id="speakerName" 
+              name="name" 
+              placeholder="speaker name" 
+              onChange={speakerDataChange} />
+              <br />
+            <label htmlFor="speakerAbout">About the Speaker</label>
+            <br />
+            <input 
+              type="text" 
+              id="speakerAbout" 
+              name="about" 
+              placeholder="about" 
+              onChange={speakerDataChange} />
+
+              <button type="button" onClick={appendSpeaker}>Add speaker</button>
+          </div>
+          <div>{speakers.map((speaker) => (
+              <div key={speaker.id}>
+                {speaker.name}
+                {speaker.about}
+              </div>
+          ))}</div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <button type="submit">Create Event</button>
         </form>
+        <button onClick={check}>check</button>
     </div>
   );
 };

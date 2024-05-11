@@ -1,4 +1,4 @@
-import React, { Children, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Events = () => {
@@ -9,7 +9,8 @@ const Events = () => {
   }, []);
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/event");
+      const response = await axios.get("http://localhost:3000/event/allEvents");
+      console.log(response)
       setEvents(response.data.events);
     } catch (error) {
       console.log(error);
@@ -18,7 +19,6 @@ const Events = () => {
 
   return (
     <div>
-      <h1 className="bg-slate-600 font-normal text-cyan-400">Taiwind Check</h1>
       Event
       {events.map((event) => (
         <div key={event._id}>
