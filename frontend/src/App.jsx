@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Events from "./pages/Events";
-import "./App.css";
 import Signup from "./components/Signup";
 import LoginPage from "./pages/LoginPage";
 import UserProfile from "./pages/UserProfile";
+import CreateEvent from "./pages/CreateEvent";
+import UpdateEvent from "./pages/UpdateEvent";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/update-event" element={<UpdateEvent />} />
         </Routes>
       </BrowserRouter>
     </>
