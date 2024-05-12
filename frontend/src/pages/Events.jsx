@@ -20,19 +20,33 @@ const Events = () => {
   };
 
   return (
-    <div className="text-white">
-      Event
-      {events.map((event) => (
-        <div key={event._id} >
-          <h3>{event.title}</h3>
-          <h6>{event.venue}</h6>
-          <h3>{event.date}</h3>
-          <h3>{event.time}</h3>
-          <Link to={`/event/${event._id}`}>View</Link>
-          <br />
-        </div>
-      ))}
+    <>
+      <div className="text-white flex w-11/12 mx-auto max-w-maxContent justify-center items-center gap-x-[170px] 
+                      mt-10 border border-richblack-200 py-6">
+        <h3 className="text-[#e37222] text-[28px] font-[600] font-inter leading-[32px]">Title</h3>
+        <h3 className="text-[#e37222] text-[28px] font-[600] font-inter leading-[32px]">Location</h3>
+        <h3 className="text-[#e37222] text-[28px] font-[600] font-inter leading-[32px]">Date</h3>
+        <h3 className="text-[#e37222] text-[28px] font-[600] font-inter leading-[32px]">Time</h3>
+        <h3 className="text-[#e37222] text-[28px] font-[600] font-inter leading-[32px]">Option</h3>
       </div>
+    <div className="w-11/12 max-w-maxContent mx-auto flex flex-row justify-between items-center mt-10 text-white">
+      <div className="w-full flex  flex-col">
+      {events.map((event) => (
+          <div key={event._id} className="flex justify-center items-center py-8 border border-richblack-200 ">
+            <p className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.title}</p>
+            <p className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.venue}</p>
+            <p className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.date}</p>
+            <p className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.time}</p>
+           <button className="border px-2">
+           <Link to={`/event/${event._id}`} className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px]
+                                                            w-[20%]">View</Link>
+           </button>
+            
+          </div>
+        ))}
+      </div>
+    </div>
+    </>
   );
 };
 
