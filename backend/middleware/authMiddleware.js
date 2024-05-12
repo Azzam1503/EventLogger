@@ -3,8 +3,8 @@ const User = require("../model/User");
 const authMiddleware = async (req, res, next) => {
   try {
     const token = req.cookies.Authorization;
-    console.log(token)
-    console.log("called");
+    // console.log(token)
+    // console.log("called");
    
     if (!token) {
       return res.status(401).json({ msg: "No token found" });

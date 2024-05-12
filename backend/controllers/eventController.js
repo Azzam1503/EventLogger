@@ -3,8 +3,7 @@ const uploadOnCloudinary = require("../utils/cloudinary");
 
 const allEvents = async (req, res) => {
   try {
-    const events = await Event.find({});
-
+    const events = await Event.find({}).select("-imageUrl -speakers -description");
     return res
       .status(200)
       .json({ message: "Events fetched Successfully", events });

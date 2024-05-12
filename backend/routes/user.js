@@ -15,5 +15,6 @@ router.get(
   authMiddleware,
   userController.updateAvatar
 );
+router.get("/events", authMiddleware, userController.getUserEvents);
 
 module.exports = router;

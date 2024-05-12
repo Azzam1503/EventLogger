@@ -1,4 +1,5 @@
 const User = require("../model/User");
+const Event = require("../model/Events");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const uploadOnCloudinary = require("../utils/cloudinary");
@@ -80,8 +81,9 @@ const logoutUser = (req, res) => {
 
 const checkAuth = (req, res) => {
   try {
-    // console.log(req.user);
-    res.sendStatus(200);
+    console.log(req.user);
+    const user = req.user;
+    return res.status(200).json(user);
   } catch (error) {
     console.log(error);
     res.sendStatus(400);
@@ -97,6 +99,24 @@ const getUser = async (req, res) => {
   }
 };
 
+const getUserEvents = async (req, res) => {
+  try {
+    const {_id} = req.user;
+    const events = await Event.find({ userId: _id});
+
+    // Filter events based on whether their dates are in the past or in the future
+    const currentDate = new Date();
+    const pastEvents = events.filter(event => new Date(event.date) < currentDate);
+    const upcomingEvents = events.filter(event => new Date(event.date) >= currentDate);
+    console.log("pastEvents", pastEvents);
+
+    res.json({ pastEvents, upcomingEvents });
+  } catch (error) {
+    console.error("Error fetching user's events:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 const updateUser = async () => {};
 
 const updateAvatar = async () => {};
@@ -108,4 +128,5 @@ module.exports = {
   getUser,
   updateAvatar,
   updateUser,
+  getUserEvents
 };
