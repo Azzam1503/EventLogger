@@ -8,6 +8,7 @@ import CreateEvent from "./pages/CreateEvent";
 import UpdateEvent from "./pages/UpdateEvent";
 import Event from "./pages/Event";
 import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
 import axios from "axios";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     <div className="w-full min-h-screen bg-richblack-900">
     <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/events" element={<Events user={user} />} />
           <Route path="/register" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
           <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
