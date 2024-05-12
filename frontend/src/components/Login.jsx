@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Images from "../assets/images/playimges.jpg"
+import Images from "../assets/images/gameImage.jpg"
 import fromeImage from '../assets/images/frame.png'
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
@@ -102,7 +102,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
           className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Submit</button>
       </form>
 
-      <div className="w-[400px] h-[250px]">
+      <div className="w-[400px]">
         <img src={Images} className="rounded-lg" />
       </div>
 
