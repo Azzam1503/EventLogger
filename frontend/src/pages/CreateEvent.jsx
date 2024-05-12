@@ -121,7 +121,7 @@ const CreateEvent = () => {
         <form onSubmit={handleSubmit}
         className="flex flex-col gap-y-4 mt-[20px] w-[50%]"
         >
-          <h1 className="text-[2.5rem] font-semibold leading-[2.375rem] text-richblack-5"
+          <h1 className="text-[2.5rem] font-semibold leading-[2.375rem] text-yellow-50"
             >Create Event<spam className="">..</spam></h1>
             <hr className="text-richblack-200 w-[625px]"/>
  
@@ -261,7 +261,7 @@ const CreateEvent = () => {
               />
 
               <button type="button" onClick={appendSpeaker}
-                className="mt-6 rounded-[8px] bg-blue-400 py-[8px] px-[12px] font-medium text-richblack-25">Add speaker
+                className="mt-6 rounded-[8px] bg-blue-400 py-[6px] px-[8px] font-medium text-richblack-25">Add speaker
               </button>
           </div>
           <ul>{speakers.map((speaker) => (
