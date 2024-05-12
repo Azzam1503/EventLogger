@@ -28,8 +28,8 @@ const Navbar = (props) => {
       <div className='text-white w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-3'>
         <Link to="/">
             <div className='flex items-center gap-1'>
-                    <p className='bg-richblack-25 text-black rounded-full w-[35px] text-center font-[600] text-[24px] leading-[32px]'>E</p>
-                    <p className='text-white font-[600] text-[24px] leading-[32px]'>EventLogger</p>
+                    <p className='bg-richblack-25 text-black rounded-full w-[32px] text-center font-[600] text-[24px] leading-[32px]'>E</p>
+                    <p className='text-white font-[600] text-[28px] leading-[36px]'>EventLogger</p>
             </div>
         </Link>
 
@@ -53,14 +53,6 @@ const Navbar = (props) => {
 
             <div className='flex space-x-6'>
 
-                {/* <Link to="/login">
-                    <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px]'>Login</button>
-                </Link>
-
-                <Link to="/register">
-                    <button  className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px]'>Signup</button>
-                </Link> */}
-
                 <div className='text-white flax space-x-6'>
                 { !isLoggedIn &&
                     <Link to="/login">
@@ -77,6 +69,13 @@ const Navbar = (props) => {
                     </Link>
                 }
                 { isLoggedIn &&
+                    <Link to="/Dashboard">
+                        <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px] '>
+                            Dashboard
+                        </button>
+                    </Link>
+                }
+                { isLoggedIn &&
                     <Link to="/">
                         <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px]'
                                 onClick={ () => {
@@ -88,13 +87,7 @@ const Navbar = (props) => {
                         </button>
                     </Link>
                 }
-                { isLoggedIn &&
-                    <Link to="/Dashboard">
-                        <button className='w-11/12 max-w[1160px] mx-auto flex justify-between items-center gap-3 '>
-                            Dashboard
-                        </button>
-                    </Link>
-                }
+                
             </div>
 
             </div>
