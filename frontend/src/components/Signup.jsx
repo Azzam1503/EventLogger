@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Photo from "../assets/images/games22.jpg";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -62,16 +63,25 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="avatar">Profile Picture</label>
+    <div className="w-11/12 max-w-maxContent flex justify-between mx-auto py-14 gap-x-12">
+      <form onSubmit={handleSubmit} className="flex w-[45%] flex-col gap-y-2 mt-10"> 
+
+        {/* <label htmlFor="avatar">Profile Picture</label>
         <input
           type="file"
           name="image"
           id="avatar"
           onChange={(e) => setImage(e.target.files[0])}
-        />
-        <label htmlFor="fullName">Full Name</label>
+        /> */}
+
+        <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">
+          <h1 className="text-[30px] font-inter font-[600] leading-[38px] text-richblack-5">Join the millions playing to game with EventLogger for free</h1>
+          <p className="mt-4 text-[1.125rem] leading-[1.625rem] text-richblack-5">Build Events for today, tomorrow, and beyond.
+               <span className="font-edu-sa font-bold italic text-blue-100">Education to future-proof your career.</span></p>
+        </div>
+      <br/>
+        <label htmlFor="fullName"
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Full Name <sup className="text-pink-200">*</sup></label>
         <input
           type="text"
           name="fullName"
@@ -79,8 +89,14 @@ const Signup = () => {
           required
           placeholder="full name"
           onChange={handleInputChange}
+          style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none"
         />
-        <label htmlFor="email">Email</label>
+
+        <label htmlFor="email"
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Email <sup className="text-pink-200">*</sup></label>
         <input
           type="text"
           name="email"
@@ -88,8 +104,14 @@ const Signup = () => {
           required
           placeholder="email"
           onChange={handleInputChange}
+          style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none"
         />
-        <label htmlFor="password">Passpassword</label>
+
+        <label htmlFor="password"
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Passpassword <sup className="text-pink-200">*</sup></label>
         <input
           type="text"
           name="password"
@@ -97,11 +119,24 @@ const Signup = () => {
           required
           placeholder="password"
           onChange={handleInputChange}
+          style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none"
         />
-        <button type="submit">Register</button>
+        <button type="submit"
+            className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Create Account</button>
       </form>
+
+     <div className="w-[500px] mt-16">
+      <img src={Photo} className="rounded-[8px]"/>
+     </div>
+
     </div>
   );
 };
 
 export default Signup;
+
+
+
