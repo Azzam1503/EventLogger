@@ -18,10 +18,10 @@ const Events = () => {
   };
 
   return (
-    <div>
+    <div >
       Event
       {events.map((event) => (
-        <div key={event._id}>
+        <div key={event._id} >
           <h3>{event.title}</h3>
           <h5>{event.description}</h5>
           <h6>{event.venue}</h6>

@@ -1,5 +1,7 @@
 import {useEffect, useState } from "react";
+import { IoTimer } from "react-icons/io5";
 import axios from "axios";
+
 
 const CreateEvent = () => {
   const [eventFormData, setEventFormData] = useState({
@@ -114,90 +116,165 @@ const CreateEvent = () => {
 
   
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
-          <h1>Create Event</h1>
+    <div className="w-11/12 max-w-maxContent flex justify-center mx-auto py-14">
+
+        <form onSubmit={handleSubmit}
+        className="flex flex-col gap-y-4 mt-[20px] w-[50%]"
+        >
+          <h1 className="text-[2.5rem] font-semibold leading-[2.375rem] text-richblack-5"
+            >Create Event<spam className="">..</spam></h1>
+            <hr className="text-richblack-200 w-[625px]"/>
+ 
+
+          <label htmlFor="title"
+              className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Title <sup className="text-pink-200">*</sup>
+          </label>
           <input
             type="text"
             name="title"
+            id="title"
             value={eventFormData.title}
-            placeholder="title"
+            placeholder="Enter the title..."
             required
             onChange={handleFormDataChange}
+            style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
           />
+
+          <label htmlFor="title"
+              className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Description <sup className="text-pink-200">*</sup>
+          </label>
           <textarea
             type="text"
             name="description"
             value={eventFormData.description}
-            placeholder="description"
+            placeholder="Enter the description..."
             required
             onChange={handleFormDataChange}
+            style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none h-[250px]"
           />
+
+          <label htmlFor="title"
+              className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Venue <sup className="text-pink-200">*</sup>
+          </label>
           <input
             type="text"
             name="venue"
             value={eventFormData.venue}
-            placeholder="venue"
+            placeholder="Enter the venue..."
             required
             onChange={handleFormDataChange}
+            style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
           />
-          <br />
+
+          <label htmlFor="title"
+              className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Upload Image <sup className="text-pink-200">*</sup>
+          </label>
           <input
             type="file"
             name="image"
             required
             onChange={(e) => setImage(e.target.files[0])}
+            style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none"
           />
-          <br />
+
+          <label htmlFor="title"
+              className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Select Date <sup className="text-pink-200">*</sup>
+          </label>
            <input
           type="date"
           name="date"
           value={eventFormData.date}
           required
           onChange={handleFormDataChange}
+          style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none"
         />
+
         {/* Time input */}
+        <label htmlFor="title"
+              className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Select Time <sup className="text-pink-200">*</sup>
+          </label>
         <input
           type="time"
           name="time"
           value={eventFormData.time}
           required
           onChange={handleFormDataChange}
+          style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none"
         />
+          
+          
+
           <div>
-            <br />
-            <h2>Add speakers</h2>
-            <label htmlFor="speakerName">Name of speaker</label>
+            <h2  className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5 mt-2">Add speakers</h2>
+            <hr className="text-richblack-200"/>
+            <br/>
+            <label htmlFor="speakerName"
+               className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">Name of speaker <sup className="text-pink-200">*</sup>
+            </label>
             <br />
             <input 
               type="text" 
               id="speakerName" 
               name="name" 
-              placeholder="speaker name" 
-              onChange={speakerDataChange} />
-              <br />
-            <label htmlFor="speakerAbout">About the Speaker</label>
+              placeholder="Enter speaker name..." 
+              onChange={speakerDataChange}
+              style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none mt-2 mb-2"
+               />
+              
+          <br />
+
+            <label htmlFor="speakerAbout"
+             className=" text-[0.875rem] leading-[1.375rem] text-richblack-5">About the Speaker <sup className="text-pink-200">*</sup>
+            </label>
             <br />
             <input 
               type="text" 
               id="speakerAbout" 
               name="about" 
-              placeholder="about" 
-              onChange={speakerDataChange} />
+              placeholder="Enter about speaker..." 
+              onChange={speakerDataChange} 
+              style={{
+            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+          }}
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none mt-2"
+              />
 
-              <button type="button" onClick={appendSpeaker}>Add speaker</button>
+              <button type="button" onClick={appendSpeaker}
+                className="mt-6 rounded-[8px] bg-blue-400 py-[8px] px-[12px] font-medium text-richblack-25">Add speaker
+              </button>
           </div>
           <ul>{speakers.map((speaker) => (
-              <li key={speaker.id}>
+              <li key={speaker.id} className="text-richblack-25">
                 {speaker.name}
                 {speaker.about}
                 <button type="button" onClick={() => deleteSpeaker(speaker.id)}>Delete</button>
               </li>
           ))}</ul>
-          <br />
-          <br />
-          <br />
-          <button type="submit">Create Event</button>
+         
+          <button type="submit"
+            className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Create Event
+          </button>
         </form>
     </div>
   );
