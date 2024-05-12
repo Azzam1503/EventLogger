@@ -87,7 +87,7 @@ const deleteEvent = async (req, res) => {
   }
 };
 
- const getEvent = async (req, res) => {
+const getEvent = async (req, res) => {
   try {
     const {id} = req.params;
 
@@ -99,10 +99,33 @@ const deleteEvent = async (req, res) => {
   }
 }
 
+const homepageEvents = async (req, res) => {
+  try {
+    const today = new Date();
+
+    const upcomingEvents = await Event.find({ date: { $gte: today.toISOString() } })
+      .sort({ date: 1 })
+      .limit(10);
+    
+    const pastEvents = await Event.find({ date: { $lt: today.toISOString() } })
+      .sort({ date: -1 })
+      .limit(10);
+    
+    console.log("past", pastEvents);
+    console.log("upcoming", upcomingEvents);
+    
+    res.json({ upcomingEvents, pastEvents });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 module.exports = {
   allEvents,
   craeteEvent,
   updateEvent,
   deleteEvent,
-  getEvent
+  getEvent,
+  homepageEvents
 };

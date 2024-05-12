@@ -108,7 +108,6 @@ const getUserEvents = async (req, res) => {
     const currentDate = new Date();
     const pastEvents = events.filter(event => new Date(event.date) < currentDate);
     const upcomingEvents = events.filter(event => new Date(event.date) >= currentDate);
-    console.log("pastEvents", pastEvents);
 
     res.json({ pastEvents, upcomingEvents });
   } catch (error) {
