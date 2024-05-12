@@ -1,16 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const User = () => {
-  const [user, setUser] = useState({});
+const User = ({user}) => {
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({});
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/user/profile", {
+      const response = await axios.get(`http://localhost:3000/user/profile`, {
         withCredentials: true,
       });
-      setUser(response.data.user);
+      console.log(response)
+      setUserData(response.data.user);
     } catch (error) {
+      navigate("/login");
       console.log(error);
     }
   };
@@ -20,18 +24,10 @@ const User = () => {
 
   const updateDetails = () => {};
   return (
-    <div>
-      <img
-        src={user.imageUrl}
-        alt=""
-        width={200}
-        height={200}
-        style={{ border: "1px solid black" }}
-      />
+    <div className="text-white">
       <h1>User profile</h1>
-      <h1></h1>
-      <h1>{user.fullName}</h1>
-      <h1>{user.email}</h1>
+      <h1>{userData.fullName}</h1>
+      <h1>{userData.email}</h1>
       <br />
       <button onClick={updateDetails}>Edit detials</button>
     </div>

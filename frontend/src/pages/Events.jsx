@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -18,20 +20,16 @@ const Events = () => {
   };
 
   return (
-    <div >
+    <div className="text-white">
       Event
       {events.map((event) => (
         <div key={event._id} >
           <h3>{event.title}</h3>
-          <h5>{event.description}</h5>
           <h6>{event.venue}</h6>
-          <img
-            src={event.imageUrl}
-            alt="image"
-            style={{ width: "500px", height: "400px" }}
-          />
+          <h3>{event.date}</h3>
+          <h3>{event.time}</h3>
+          <Link to={`/event/${event._id}`}>View</Link>
           <br />
-          <button onClick={() => toggleUpdate(event)}>Edit Event</button>
         </div>
       ))}
       </div>
