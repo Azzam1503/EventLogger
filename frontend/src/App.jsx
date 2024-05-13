@@ -23,7 +23,6 @@ function App() {
     const auth = async () => {
       try {
         const res =  await axios.get("http://localhost:3000/user/check-auth",{withCredentials: true});
-        console.log(res);
         const {email, _id, fullName} = res.data;
         if(res.status === 200){
           setIsLoggedIn(true);
@@ -32,6 +31,7 @@ function App() {
             id: _id,
             name: fullName
           })
+          console.log(res);
         }else{
           setIsLoggedIn(false)
         }
@@ -42,20 +42,22 @@ function App() {
 
     auth();
   },[])
+  if (isLoggedIn === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="w-full min-h-screen bg-richblack-900">
     <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
           <Route path="/events" element={<Events user={user} />} />
           <Route path="/register" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
           <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
           <Route path="/user-profile" element={<UserProfile user={user} />} />
-          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/create-event" element={<CreateEvent isLoggedIn={isLoggedIn} />} />
           <Route path="/update-event/:id" element={<UpdateEvent />} />
-          <Route path="/event/:id" element={<Event />} />
-          {/* <Route path="/Dashboard" element={<Dashboard/>} /> */}
+          <Route path="/event/:id" element={<Event user={user} />} />
         </Routes>
     </div>
   );

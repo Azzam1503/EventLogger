@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsStopwatchFill } from "react-icons/bs";
 import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { BsPersonLinesFill } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
-import { MdDescription } from "react-icons/md";
+import { MdDescription, MdDelete } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
 
-const Event = () => {
+const Event = ({user}) => {
     const [event, setEvent] = useState({})
 
     const {id} = useParams();
@@ -23,9 +24,23 @@ const Event = () => {
         fetchEvent();
     },[])
 
-  return (
-    <div className='w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-x-[80px] mt-4'>
+    const handleDelete = async () => {
+        try {
+          const response = await axios.delete(
+            "http://localhost:3000/event/delete-event/" + id
+          );
+          console.log("event deleted successfully");
+        } catch (error) {
+          console.log("error while deleting the event");
+        }
+    
+        const remainingEvents = events.filter((event) => event._id != id);
+        setEvents(remainingEvents);
+      };
 
+  return (
+    <div className='w-9/12 max-w-maxContent mx-auto flex justify-between items-center gap-x-[80px] mt-4'>
+        
         <div className='w-[50%]'>
             <h1 className='text-[#e37222] text-[36px] font-[600] font-inter leading-[44px] pt-6'>{event.title}</h1>
                 <hr className="text-richblack-200 w-full"/>
@@ -79,7 +94,11 @@ const Event = () => {
                 ))}
         </div>
 
-         <div className='w-[600px] flex justify-center items-center mx-auto'>
+         <div className='w-[600px] flex flex-col justify-evenly items-center mx-auto text-white'>
+            <div className='flex font-bold text-3xl'>
+            {event.userId === user.id &&<Link to={`/update-event/${event._id}`}><FaRegEdit /></Link>}
+            {event.userId === user.id &&<button onClick={handleDelete}><MdDelete /></button>}
+            </div>
             <img src={event?.imageUrl} className='rounded-[8px]' />
         </div>
       

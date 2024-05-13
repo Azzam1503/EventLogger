@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Images from "../assets/images/gameImage.jpg"
-import fromeImage from '../assets/images/frame.png'
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const navigate = useNavigate();
@@ -44,13 +43,12 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
           withCredentials: true,
         }
       );
-      if(response){
+
+      if(response.status === 200){
         setIsLoggedIn(true);
+        navigate("/");
       }
-      console.log(response);
-      if (response.statusText == "OK") {
-        navigate("/events");
-      }
+
     } catch (error) {
       console.log(error);
     }

@@ -45,7 +45,7 @@ const Navbar = (props) => {
                         </li>
 
                         <li>
-                            <Link to={"/contact"}>Contact Us</Link>
+                            <Link to={"/create-event"}>Contact Us</Link>
                         </li>
 
                     </ul>

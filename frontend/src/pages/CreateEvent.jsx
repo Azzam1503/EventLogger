@@ -1,9 +1,11 @@
 import {useEffect, useState } from "react";
 import { IoTimer } from "react-icons/io5";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+const CreateEvent = ({isLoggedIn}) => {
+  const navigate = useNavigate();
 
-const CreateEvent = () => {
   const [eventFormData, setEventFormData] = useState({
     title: "",
     description: "",
@@ -19,6 +21,11 @@ const CreateEvent = () => {
     about: ""
   })
   const [speakers, setSpeakers] = useState([]);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  },[isLoggedIn])
 
   const handleFormDataChange = (e) => {
     const { name, value } = e.target;
@@ -29,23 +36,6 @@ const CreateEvent = () => {
     const {name, value} = e.target;
     setSpeaker((prevData) => ({...prevData, [name]: value}));
   }
-
- 
-
-//   const handleDelete = async (id) => {
-//     try {
-//       const response = await axios.delete(
-//         "http://localhost:3000/event/delete-event/" + id
-//       );
-//       console.log("event deleted successfully");
-//     } catch (error) {
-//       console.log("error while deleting the event");
-//     }
-
-//     const remainingEvents = events.filter((event) => event._id != id);
-//     setEvents(remainingEvents);
-//   };
-
   
   const toggleUpdate = (event) => {
     setUpdateFormData({
@@ -82,7 +72,7 @@ const CreateEvent = () => {
           withCredentials: true
         }
       );
-      console.log(response);
+      navigate(`/event/${response.data.newEvent._id}`);
       setEventFormData({
         title: "",
         description: "",
@@ -181,7 +171,6 @@ const CreateEvent = () => {
           <input
             type="file"
             name="image"
-            required
             onChange={(e) => setImage(e.target.files[0])}
             style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
