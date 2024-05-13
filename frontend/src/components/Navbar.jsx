@@ -41,11 +41,11 @@ const Navbar = (props) => {
                         </li>
 
                         <li>
-                            <Link to={"/"}>About</Link>
+                            <Link to={"/events"}>Events</Link>
                         </li>
 
                         <li>
-                            <Link to={"/create-event"}>Contact Us</Link>
+                            <Link to={"/create-event"}>Create</Link>
                         </li>
 
                     </ul>
@@ -69,7 +69,7 @@ const Navbar = (props) => {
                     </Link>
                 }
                 { isLoggedIn &&
-                    <Link to="/Dashboard">
+                    <Link to="/user-profile">
                         <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px] '>
                             Dashboard
                         </button>
