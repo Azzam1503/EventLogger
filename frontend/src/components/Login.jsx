@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Images from "../assets/images/gameImage.jpg"
+import Images from "../assets/images/mjpru1.jpg"
+import fromeImage from '../assets/images/frame.png'
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const navigate = useNavigate();

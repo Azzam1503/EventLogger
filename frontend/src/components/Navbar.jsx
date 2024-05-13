@@ -29,7 +29,7 @@ const Navbar = (props) => {
         <Link to="/">
             <div className='flex items-center gap-1'>
                     <p className='bg-richblack-25 text-black rounded-full w-[32px] text-center font-[600] text-[24px] leading-[32px]'>E</p>
-                    <p className='text-white font-[600] text-[28px] leading-[36px]'>EventLogger</p>
+                    <p className='text-white font-[600] text-[28px] leading-[36px]'>Event Logger</p>
             </div>
         </Link>
 
