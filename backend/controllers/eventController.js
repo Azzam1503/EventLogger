@@ -48,8 +48,15 @@ const updateEvent = async (req, res) => {
       updatedImage = await uploadOnCloudinary(req.file.path);
       console.log(updatedImage);
     }
-    
+
     const { id } = req.params;
+    const check = await Event.findById(id);
+
+    // Check if the user making the request is the creator of the event
+    if (check.userId !== req.user.id) {
+      return res.status(403).json({ message: "You are not authorized to update this event" });
+    }
+
     await Event.findByIdAndUpdate(
       { _id: id },
       {
