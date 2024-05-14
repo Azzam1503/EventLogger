@@ -10,6 +10,7 @@ import Event from "./pages/Event";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import axios from "axios";
+import "./index.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn ] = useState(null);
@@ -48,7 +49,7 @@ function App() {
 
   return (
     <div className="w-full min-h-screen bg-richblack-900">
-    <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>
+    <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
           <Route path="/events" element={<Events user={user} />} />

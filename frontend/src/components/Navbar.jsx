@@ -1,9 +1,13 @@
 import React from 'react'
-import {  Link } from 'react-router-dom'
+import {  Link, NavLink } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from "axios";
 
 const Navbar = (props) => {
+
+    const matchRoute = (route) => {
+        return matchPath({path:route}, location.pathname);
+    }
 
     let isLoggedIn = props.isLoggedIn
     let setIsLoggedIn = props.setIsLoggedIn
@@ -28,24 +32,24 @@ const Navbar = (props) => {
       <div className='text-white w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-3'>
         <Link to="/">
             <div className='flex items-center gap-1'>
-                    <p className='bg-richblack-25 text-black rounded-full w-[32px] text-center font-[600] text-[24px] leading-[32px]'>E</p>
-                    <p className='text-white font-[600] text-[28px] leading-[36px]'>Event Logger</p>
+                    <p className='bg-[#f9f9f9] text-black rounded-full w-[32px] text-center font-[700] text-[24px] leading-[32px]'>E</p>
+                    <p className='text-[#dadbdc] font-[600] text-[28px] leading-[36px]'>Event Logger</p>
             </div>
         </Link>
 
         <nav>
-                    <ul className='text-white flex gap-x-6'> 
+                    <ul className='text-richblack-25 text-[16px] font-inter font-[530] leading-[24px] flex gap-x-6 '> 
 
-                        <li>
-                            <Link to={"/"}>Home</Link>
+                        <li className='hover:text-yellow-25'>
+                            <NavLink to={"/"}>Home </NavLink>
                         </li>
 
-                        <li>
-                            <Link to={"/events"}>Events</Link>
+                        <li className='hover:text-yellow-25'>
+                            <NavLink to={"/events"}>All Events</NavLink>
                         </li>
 
-                        <li>
-                            <Link to={"/create-event"}>Create</Link>
+                        <li className='hover:text-yellow-25'>
+                            <NavLink to={"/create-event"}>Create</NavLink>
                         </li>
 
                     </ul>
@@ -53,31 +57,31 @@ const Navbar = (props) => {
 
             <div className='flex space-x-6'>
 
-                <div className='text-white flax space-x-6'>
+                <div className='text-[#dbddea] flax space-x-6'>
                 { !isLoggedIn &&
                     <Link to="/login">
-                        <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px]'>
+                        <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100'>
                             Login
                         </button>
                     </Link>
                 }
                 { !isLoggedIn &&
                     <Link to="/register">
-                        <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px]'>
+                        <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100'>
                             Signup
                         </button>
                     </Link>
                 }
                 { isLoggedIn &&
                     <Link to="/user-profile">
-                        <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px] '>
+                        <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100'>
                             Dashboard
                         </button>
                     </Link>
                 }
                 { isLoggedIn &&
                     <Link to="/">
-                        <button className='bg-richblack-800 border border-[#2c333f] px-3 py-1 rounded-[8px]'
+                        <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100'
                                 onClick={ () => {
                                     handleLogout();
                                     toast.success("Logged Out")

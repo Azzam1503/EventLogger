@@ -2,6 +2,10 @@ import {useEffect, useState } from "react";
 import { IoTimer } from "react-icons/io5";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { IoIosAdd } from "react-icons/io";
+import { MdDeleteForever } from "react-icons/md";
+
+
 
 const CreateEvent = ({isLoggedIn}) => {
   const navigate = useNavigate();
@@ -113,7 +117,7 @@ const CreateEvent = ({isLoggedIn}) => {
         >
           <h1 className="text-[2.5rem] font-semibold leading-[2.375rem] text-yellow-50"
             >Create Event<spam className="">..</spam></h1>
-            <hr className="text-richblack-200 w-[625px]"/>
+            <hr className="text-yellow-200 w-[625px]"/>
  
 
           <label htmlFor="title"
@@ -175,7 +179,9 @@ const CreateEvent = ({isLoggedIn}) => {
             style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-100 outline-none file:font-[600] file:font-inter
+                       file:bg-richblack-700 file:text-richblack-25 file:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] file:hover:shadow-none
+                          file:hover:scale-95 transition-all duration-200 file:px-5 file:py-2 file:border-none file:rounded-[8px] file:text-[13px]"
           />
 
           <label htmlFor="title"
@@ -206,10 +212,8 @@ const CreateEvent = ({isLoggedIn}) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none  "
         />
-          
-          
 
           <div>
             <h2  className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5 mt-2">Add speakers</h2>
@@ -250,19 +254,28 @@ const CreateEvent = ({isLoggedIn}) => {
               />
 
               <button type="button" onClick={appendSpeaker}
-                className="mt-6 rounded-[8px] bg-blue-400 py-[6px] px-[8px] font-medium text-richblack-25">Add speaker
+                className="mt-6 text-[13px] px-6 py-3 rounded-md font-bold bg-richblack-800 text-richblack-25 
+                           shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95
+                                     transition-all duration-200 flex items-center gap-2">Add speaker <IoIosAdd  className="text-[20px]"/>
               </button>
           </div>
-          <ul>{speakers.map((speaker) => (
-              <li key={speaker.id} className="text-richblack-25">
-                {speaker.name}
-                {speaker.about}
-                <button type="button" onClick={() => deleteSpeaker(speaker.id)}>Delete</button>
+          <ul className="flex flex-col gap-3">{speakers.map((speaker) => (
+              <li key={speaker.id} className="bg-richblack-800 px-[12px] py-[8px] flex gap-6 rounded-[8px]">
+                <div className="w-[85%] py-2 flex flex-col space-y-3">
+                    <h className="text-richblack-5 font-[600] text-[24px]">{speaker.name}</h>
+                    <p className="text-richblack-25 w-[90%]">{speaker.about}</p>
+                </div>
+
+                <button type="button" onClick={() => deleteSpeaker(speaker.id)}
+                      className="flex my-auto items-center gap-2 h-[40px] text-[18px] px-6 py-3 rounded-md font-bold bg-richblack-700 text-pink-200 
+                           shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95
+                                     transition-all duration-200"><MdDeleteForever/></button>
               </li>
           ))}</ul>
          
           <button type="submit"
-            className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Create Event
+            className="mt-6 bg-yellow-50 text-black text-[13px] px-6 py-3 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)]
+                          hover:shadow-none hover:scale-95 transition-all duration-200">Create Event
           </button>
         </form>
     </div>
