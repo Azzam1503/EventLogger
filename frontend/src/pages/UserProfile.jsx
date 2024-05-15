@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import User from "../components/User";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 const UserProfile = ({user}) => {
   const [eventType, setEventType] = useState("upcoming");
@@ -21,42 +22,57 @@ const UserProfile = ({user}) => {
     fetchEvents();
   },[])
   return (
-    <div className="text-white">
+    <>
       <User user = {user} />
 
       <div className="flex justify-center items-center w-11/12 max-w-maxContent mx-auto gap-x-12">
-        <button onClick={() => setEventType("upcoming")}
-              className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Upcoming Events</button>
-        <button onClick={() => setEventType("past")}
-                className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Past Events</button>
+ 
+        
+          <button onClick={() => setEventType("upcoming")}
+                className="mt-6 text-[13px] px-6 py-3 rounded-md font-bold bg-richblack-800 text-richblack-25 shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+                               hover:shadow-none hover:scale-95 transition-all duration-200 flex items-center gap-2">Upcoming Events <FaArrowRight /></button>       
+
+          <button onClick={() => setEventType("past")}
+                  className="mt-6 text-[13px] px-6 py-3 rounded-md font-bold bg-richblack-800 text-richblack-25 shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+                                hover:shadow-none hover:scale-95 transition-all duration-200 flex items-center gap-2">Past Events <FaArrowRight /></button>
       </div>
       
       <div className="w-11/12 max-w-maxContent mx-auto flex flex-row justify-between items-center mt-10 text-white">
           <div className="w-full flex  flex-col">
               {eventType === "upcoming" ? upcomingEvents.map(event => (
               <div key={event._id} className="flex justify-center items-center py-8 border border-richblack-200 ">
-                  <h3 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.title}</h3>
-                  <h6 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.venue}</h6>
-                  <h3 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.date}</h3>
-                  <h3 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.time}</h3>
-                  <Link to={`/event/${event._id}`}
-                         className="text-richblue-5 text-[16px] font-[500] font-inter leading-[26px] border border-richblack-300 px-2">View</Link>
+                  <h3 className="text-[#dbeafe] text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.title}</h3>
+                  <h6 className="text-richblue-50 text-[16px] font-[500] font-inter leading-[26px] w-[20%]">{event.venue}</h6>
+                  <h3 className="text-richblue-50 text-[16px] font-[500] font-inter leading-[26px] w-[20%]">{event.date}</h3>
+                  <h3 className="text-richblue-50 text-[16px] font-[500] font-inter leading-[26px] w-[20%]">{event.time}</h3>
+                  <button className="border border-richblack-700 rounded-[8px] bg-richblack-800 px-[12px] py-[8px] 
+                 shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200">
+                      <Link to={`/event/${event._id}`}
+                            className="text-richblack-100 text-[13px] font-[600] font-inter leading-[21px]">View</Link>
+                  </button>
               </div>
               )): pastEvents.map((event) => (
               <div key={event._id} className="flex justify-center items-center py-8 border border-richblack-200 ">
-                  <h3 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.title}</h3>
-                  <h6 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.venue}</h6>
-                  <h3 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.date}</h3>
-                  <h3 className="text-richblue-5 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.time}</h3>
-                  <Link to={`/event/${event._id}`}
-                     className="text-richblue-5 text-[16px] font-[500] font-inter leading-[26px] border border-richblack-300 px-2">View</Link>
+                  <h3 className="text-[#dbeafe] text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.title}</h3>
+                  <h6 className="text-richblue-50 text-[16px] font-[500] font-inter leading-[26px] w-[20%]">{event.venue}</h6>
+                  <h3 className="text-richblue-50 text-[16px] font-[500] font-inter leading-[26px] w-[20%]">{event.date}</h3>
+                  <h3 className="text-richblue-50 text-[16px] font-[500] font-inter leading-[26px] w-[20%]">{event.time}</h3>
+                  <button className="border border-richblack-700 rounded-[8px] bg-richblack-800 px-[12px] py-[8px] 
+                 shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200">
+                        <Link to={`/event/${event._id}`}
+                          className="text-richblack-100 text-[13px] font-[600] font-inter leading-[21px]">View</Link>
+                  </button>
               </div>
         ))}
           </div>
       </div>
 
-    </div>
+    </>
   );
 };
 
 export default UserProfile;
+
+
+
+

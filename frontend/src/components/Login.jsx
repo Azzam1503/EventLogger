@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Images from "../assets/images/mjpru1.jpg"
-import fromeImage from '../assets/images/frame.png'
+// import Images from "../assets/images/playimges.jpg"
+import fromeImage from '../assets/images/games22.jpg'
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const navigate = useNavigate();
@@ -98,11 +98,15 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         />
 
         <button type="submit"
-          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Submit</button>
+          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900 hover:scale-95 transition-all duration-200">Submit</button>
       </form>
 
-      <div className="w-[400px]">
+      {/* <div className="w-[30%]">
         <img src={Images} className="rounded-lg" />
+      </div> */}
+
+      <div className="w-[33%] mt-[65px]">
+        <img src={fromeImage} className="rounded-lg" />
       </div>
 
       {/* <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">

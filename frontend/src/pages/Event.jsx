@@ -39,7 +39,7 @@ const Event = ({user}) => {
       };
 
   return (
-    <div className='w-9/12 max-w-maxContent mx-auto flex justify-between items-center gap-x-[80px] mt-4'>
+    <div className='w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-x-[80px] mt-4'>
         
         <div className='w-[50%]'>
             <h1 className='text-[#e37222] text-[36px] font-[600] font-inter leading-[44px] pt-6'>{event.title}</h1>
@@ -94,16 +94,24 @@ const Event = ({user}) => {
                 ))}
         </div>
 
-         <div className='w-[600px] flex flex-col justify-evenly items-center mx-auto text-white'>
-            <div className='flex font-bold text-3xl'>
-            {event.userId === user.id &&<Link to={`/update-event/${event._id}`}><FaRegEdit /></Link>}
-            {event.userId === user.id &&<button onClick={handleDelete}><MdDelete /></button>}
+         <div className='flex flex-col justify-center items-center'>
+            <img src={event?.imageUrl} className='rounded-[8px] w-[600px]' />
+
+            <div className='flex font-bold text-3xl mt-6 justify-between gap-x-12'>
+
+                <div className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] px-[12px] py-[8px] 
+                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200'>
+                   {event.userId === user.id &&<Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>}
+                </div>
+
+                <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 px-[12px] py-[8px] 
+                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200'>
+                    {event.userId === user.id &&<button onClick={handleDelete}><MdDelete className=''/></button>}
+                </div>
+            
             </div>
-            <img src={event?.imageUrl} className='rounded-[8px]' />
-        </div>
-      
-
-
+            
+        </div>s
         
     </div>
   )

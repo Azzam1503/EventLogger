@@ -66,14 +66,6 @@ const Signup = () => {
     <div className="w-11/12 max-w-maxContent flex justify-between mx-auto py-14 gap-x-12">
       <form onSubmit={handleSubmit} className="flex w-[45%] flex-col gap-y-2 mt-10"> 
 
-        {/* <label htmlFor="avatar">Profile Picture</label>
-        <input
-          type="file"
-          name="image"
-          id="avatar"
-          onChange={(e) => setImage(e.target.files[0])}
-        /> */}
-
         <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">
           <h1 className="text-[30px] font-inter font-[600] leading-[38px] text-richblack-5">Join the millions playing to game with EventLogger for free</h1>
           <p className="mt-4 text-[1.125rem] leading-[1.625rem] text-richblack-5">Build Events for today, tomorrow, and beyond.
@@ -125,7 +117,8 @@ const Signup = () => {
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none"
         />
         <button type="submit"
-            className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Create Account</button>
+            className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900
+                        hover:scale-95 transition-all duration-200">Create Account</button>
       </form>
 
      <div className="w-[500px] mt-16">
