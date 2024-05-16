@@ -43,9 +43,9 @@ function App() {
 
     auth();
   },[])
-  if (isLoggedIn === null) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoggedIn === null) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="w-full min-h-screen bg-richblack-900">

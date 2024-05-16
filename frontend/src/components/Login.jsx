@@ -108,24 +108,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
       <div className="w-[33%] mt-[65px]">
         <img src={fromeImage} className="rounded-lg" />
       </div>
-
-      {/* <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
-            <img
-              src={fromeImage}
-              alt="Pattern"
-              width={558}
-              height={504}
-              loading="lazy"
-            />
-            <img
-              src={Images}
-              alt="Students"
-              width={558}
-              height={200}
-              loading="lazy"
-              className="absolute -top-4 right-4 z-10"
-            />
-          </div> */}
+      
     </div>
 
   );

@@ -99,9 +99,9 @@ const HomePage = ({isLoggedIn}) => {
             </div>
 
             {/* Footer section */}
-            <div className='bg-[#161d29] h-[200px] mt-6'>
+           
                 <Footer/>
-            </div>
+            
     </>
   )
 }
