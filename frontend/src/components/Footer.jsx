@@ -12,8 +12,8 @@ const Footer = () => {
     <>
       <div className='bg-richblack-800 lg:h-[358px] relative'>
 
-         <div className='absolute text-richblack-700 select-none mt-[177px]'>
-            <p className='text-[120px]'>Mjpru Bareilly</p>
+         <div className='absolute text-richblack-700 select-none mt-[195px]'>
+            <p className='text-[100px]'>Mjpru Bareilly</p>
          </div>
 
           <div className='w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-6 mt-10 py-16 border-b lg:border-richblack-600'>
@@ -77,7 +77,7 @@ const Footer = () => {
 
             </div>
       </div>
-             <p className='w-11/12 lg:w-full mx-auto pl-[900px] text-richblack-700 text-[42px]  leading-[50px] font-[600]
+             <p className='w-11/12 lg:w-full mx-auto pl-[800px] text-richblack-700 text-[32px]  leading-[40px] font-[600]
                 select-none'>Supervisor - Prof V Rishiwal © 2024 EventLogger</p> 
 
        </div>
