@@ -14,12 +14,13 @@ const allEvents = async (req, res) => {
 
 const craeteEvent = async (req, res) => {
   try {
-    const { title, description, venue, speakers, date, time } = req.body;
+    const { title, description, venue, speakers, date, time, department } = req.body;
     console.log(req.body.speakers);
     let eventImage;
     if (req.file != undefined) {
       eventImage = await uploadOnCloudinary(req.file.path);
     }
+
     const newEvent = await Event.create({
       title,
       description,
@@ -28,7 +29,8 @@ const craeteEvent = async (req, res) => {
       date,
       time,
       userId: req.user._id,
-      speakers
+      speakers,
+      department
     });
 
     return res

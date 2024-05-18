@@ -36,6 +36,9 @@ const eventsSchema = new mongosee.Schema(
         type: String
       }
     }],
+    department: {
+      type: String,
+    },
     showOnHomagePage:{
       type: Boolean,
       default: false
