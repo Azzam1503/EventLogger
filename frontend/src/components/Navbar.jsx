@@ -2,6 +2,7 @@ import React from 'react'
 import {  Link, NavLink } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from "axios";
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = (props) => {
 
@@ -50,6 +51,9 @@ const Navbar = (props) => {
 
                         <li className='hover:text-yellow-25'>
                             <NavLink to={"/create-event"}>Create</NavLink>
+                        </li>
+                        <li>
+                           <ThemeToggle/>
                         </li>
 
                     </ul>

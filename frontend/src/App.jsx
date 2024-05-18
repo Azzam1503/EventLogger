@@ -43,12 +43,12 @@ function App() {
 
     auth();
   },[])
-  if (isLoggedIn === null) {
-    return <div>Loading...</div>;
-  }
-
+  // if (isLoggedIn === null) {
+  //   return <div>Loading...</div>;
+  // }
+   
   return (
-    <div className="w-full min-h-screen bg-richblack-900">
+    <div className="w-full min-h-screen bg-richblack-900 dark:bg-white">
     <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
