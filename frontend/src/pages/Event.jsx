@@ -9,18 +9,20 @@ import { BsPersonCircle } from "react-icons/bs";
 import { MdDescription, MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 
-const Event = ({user}) => {
+const Event = ({user, isLoggedIn}) => {
     const [event, setEvent] = useState({})
 
     const {id} = useParams();
 
     const fetchEvent = async () => {
         const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
-        console.log(response);
+        // console.log(response);
         setEvent(response.data.event);
     }
 
     useEffect(() =>{
+        console.log("user",user)
+        console.log(isLoggedIn)
         fetchEvent();
     },[])
 
@@ -101,12 +103,12 @@ const Event = ({user}) => {
 
                 <div className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] px-[12px] py-[8px] 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200'>
-                   {event.userId === user.id &&<Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>}
+                   {isLoggedIn && event.userId === user.id &&<Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>}
                 </div>
 
                 <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 px-[12px] py-[8px] 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200'>
-                    {event.userId === user.id &&<button onClick={handleDelete}><MdDelete className=''/></button>}
+                    {isLoggedIn && event.userId === user.id &&<button onClick={handleDelete}><MdDelete className=''/></button>}
                 </div>
             
             </div>

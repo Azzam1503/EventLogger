@@ -85,7 +85,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         <label htmlFor="password"
           className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Password <sup className="text-pink-200">*</sup></label>
         <input
-          type="text"
+          type="password"
           id="password"
           name="password"
           placeholder="password"

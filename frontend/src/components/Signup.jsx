@@ -25,9 +25,10 @@ const Signup = () => {
         }
       );
       if (response.statusText === "OK") {
-        navigate("/events");
+        navigate("/");
       }
     } catch (error) {
+      navigate("/register")
       console.log(error);
     }
   };
@@ -103,9 +104,9 @@ const Signup = () => {
         />
 
         <label htmlFor="password"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Passpassword <sup className="text-pink-200">*</sup></label>
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Password <sup className="text-pink-200">*</sup></label>
         <input
-          type="text"
+          type="password"
           name="password"
           id="password"
           required

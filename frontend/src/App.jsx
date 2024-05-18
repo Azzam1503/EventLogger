@@ -25,6 +25,7 @@ function App() {
       try {
         const res =  await axios.get("http://localhost:3000/user/check-auth",{withCredentials: true});
         const {email, _id, fullName} = res.data;
+        console.log(res)
         if(res.status === 200){
           setIsLoggedIn(true);
           setUser({
@@ -37,7 +38,13 @@ function App() {
           setIsLoggedIn(false)
         }
       } catch (error) {
-        console.log(error)   
+        if (error.response && error.response.status === 401) {
+          // If 401 response is received, user is not authenticated
+          setIsLoggedIn(false);
+        } else {
+          // Handle other errors
+          console.error("Error:", error);
+        }
       }
     }
 
@@ -58,7 +65,7 @@ function App() {
           <Route path="/user-profile" element={<UserProfile user={user} />} />
           <Route path="/create-event" element={<CreateEvent isLoggedIn={isLoggedIn} />} />
           <Route path="/update-event/:id" element={<UpdateEvent />} />
-          <Route path="/event/:id" element={<Event user={user} />} />
+          <Route path="/event/:id" element={<Event user={user} isLoggedIn={isLoggedIn}  />} />
         </Routes>
     </div>
   );

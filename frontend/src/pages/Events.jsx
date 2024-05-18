@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  // const [filteredEvents, setFilteredEvents] = useState(events);
   
   useEffect(() => {
     fetchEvents();
@@ -12,11 +15,33 @@ const Events = () => {
   const fetchEvents = async () => {
     try {
       const response = await axios.get("http://localhost:3000/event/allEvents");
-      console.log(response)
       setEvents(response.data.events);
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleFilter = () => {
+    let filteredEvents = events;
+    if (fromDate) {
+      filteredEvents = filteredEvents.filter(
+        (event) => new Date(event.date) >= new Date(fromDate)
+      );
+    }
+    if (toDate) {
+      filteredEvents = filteredEvents.filter(
+        (event) => new Date(event.date) <= new Date(toDate)
+      );
+    }
+    setEvents(filteredEvents)
+    console.log(filteredEvents)
+  };
+
+  const handleFromDateChange = (e) => {
+    setFromDate(e.target.value);
+  };
+
+  const handleToDateChange = (e) => {
+    setToDate(e.target.value);
   };
 
   return (
@@ -31,6 +56,26 @@ const Events = () => {
       </div>
     <div className="w-11/12 max-w-maxContent mx-auto flex flex-row justify-between items-center mt-10 text-white">
       <div className="w-full flex  flex-col">
+      <div className="flex justify-between mb-4 text-black">
+            <input
+              type="date"
+              value={fromDate}
+              onChange={handleFromDateChange}
+              className="border rounded px-2 py-1"
+            />
+            <input
+              type="date"
+              value={toDate}
+              onChange={handleToDateChange}
+              className="border rounded px-2 py-1"
+            />
+            <button
+              onClick={handleFilter}
+              className="bg-blue-500 text-white rounded px-4 py-1"
+            >
+              Apply Filter
+            </button>
+          </div>
       {events.map((event) => (
           <div key={event._id} className="flex justify-center items-center py-8 border border-richblack-200 ">
             <p className="text-richblue-25 text-[18px] font-[500] font-inter leading-[26px] w-[20%]">{event.title}</p>
