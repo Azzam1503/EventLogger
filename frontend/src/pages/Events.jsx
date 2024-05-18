@@ -65,10 +65,49 @@ const Events = () => {
 
   return (
     <>
+         <div className="">
+              <div className="w-11/12 max-w-maxContent mx-auto flex justify-between items-center border border-richblack-700
+                  mt-10 px-[12px] py-[18px]">
+                  <input
+                    type="date"
+                    value={fromDate}
+                    onChange={handleFromDateChange}
+                    className=" rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-200 outline-none dark:bg-white
+                              dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+                  />
+                  <input
+                    type="date"
+                    value={toDate}
+                    onChange={handleToDateChange}
+                    className=" rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-200 outline-none dark:bg-white
+                              dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+                  />
+                  <select
+                    value={department}
+                    onChange={(e) => setDepartment(e.target.value)}
+                    className=" rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-200 outline-none dark:bg-white
+                              dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+                  >
+                    {departmentOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={handleFilter}
+                    className="border border-richblack-700 rounded-[8px] bg-richblack-800 px-[12px] py-[8px] text-richblack-100
+                      shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200"
+                  >
+                    Apply Filter
+                  </button>
+                </div>
+          </div>
       <div
         className="text-white flex w-11/12 mx-auto max-w-maxContent justify-center items-center gap-x-[170px] 
                       mt-10 border border-richblack-200 py-6"
       >
+
         <h3 className="text-[#e37222] text-[28px] font-[600] font-inter leading-[32px]">
           Title
         </h3>
@@ -87,37 +126,7 @@ const Events = () => {
       </div>
       <div className="w-11/12 max-w-maxContent mx-auto flex flex-row justify-between items-center mt-10 text-white">
         <div className="w-full flex  flex-col">
-        <div className="flex justify-between mb-4 text-black">
-            <input
-              type="date"
-              value={fromDate}
-              onChange={handleFromDateChange}
-              className="border rounded px-2 py-1"
-            />
-            <input
-              type="date"
-              value={toDate}
-              onChange={handleToDateChange}
-              className="border rounded px-2 py-1"
-            />
-            <select
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-              className="border rounded px-2 py-1"
-            >
-              {departmentOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <button
-              onClick={handleFilter}
-              className="bg-blue-500 text-white rounded px-4 py-1"
-            >
-              Apply Filter
-            </button>
-          </div>
+  
           {filteredEvents.map((event) => (
             <div
               key={event._id}
