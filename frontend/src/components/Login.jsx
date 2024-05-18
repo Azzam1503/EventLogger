@@ -62,43 +62,47 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         className="flex flex-col gap-y-4 mt-[80px] w-[50%]">
 
         <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">
-          <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">Welcome Back</h1>
-          <p className="mt-4 text-[1.125rem] leading-[1.625rem] text-richblack-5">Build Events for today, tomorrow, and beyond.
-               <span className="font-edu-sa font-bold italic text-blue-100">Education to future-proof your career.</span></p>
+          <h1 className="text-[2.875rem] font-semibold leading-[2.375rem] text-richblack-5
+                   dark:text-[#e84949] dark:font-[600] dark:text-[2.875rem]">Welcome Back</h1>
+          <p className="mt-4 text-[1.125rem] leading-[1.625rem] text-richblack-5 dark:text-black">Build Events for today, tomorrow, and beyond.
+               <span className="font-edu-sa font-bold italic text-blue-100 dark:text-[#343d68]">Education to future-proof your career.</span></p>
         </div>
 
         <label htmlFor="email"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Email Address <sup className="text-pink-200">*</sup></label>
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-black">Email Address <sup className="text-pink-200">*</sup></label>
         <input
           type="text"
           id="email"
           name="email"
-          placeholder="email"
+          placeholder="Enter your Email"
           required
           onChange={inputChange}
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none dark:bg-white
+          dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
         />
 
         <label htmlFor="password"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Password <sup className="text-pink-200">*</sup></label>
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-black">Password <sup className="text-pink-200">*</sup></label>
         <input
           type="password"
           id="password"
           name="password"
-          placeholder="password"
+          placeholder="Enter your password"
           required
           onChange={inputChange}
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none dark:bg-white
+                       dark:box-shadow: 2px 2px 10px #1f1f1f dark:text-black"
         />
 
         <button type="submit"
-          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900 hover:scale-95 transition-all duration-200">Submit</button>
+          className="mt-6 rounded-[8px] bg-yellow-50 dark:bg-[#e84949] dark:text-white py-[8px] px-[12px] font-medium
+           text-richblack-900 dark:shadow-lg hover:scale-95 transition-all duration-200">Submit</button>
       </form>
 
       {/* <div className="w-[30%]">
