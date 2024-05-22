@@ -69,23 +69,23 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         </div>
 
         <label htmlFor="email"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-black">Email Address <sup className="text-pink-200">*</sup></label>
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600]">Email Address <sup className="text-pink-200">*</sup></label>
         <input
           type="text"
           id="email"
           name="email"
-          placeholder="Enter your Email"
+          placeholder="Enter your email address"
           required
           onChange={inputChange}
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none dark:bg-white
-          dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none dark:bg-white 
+                            dark:text-richblack-700 dark:font-[600]"
         />
 
         <label htmlFor="password"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-black">Password <sup className="text-pink-200">*</sup></label>
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600]">Password <sup className="text-pink-200">*</sup></label>
         <input
           type="password"
           id="password"
@@ -96,8 +96,8 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none dark:bg-white
-                       dark:box-shadow: 2px 2px 10px #1f1f1f dark:text-black"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none
+                     dark:bg-white dark:text-richblack-700 dark:font-[600]"
         />
 
         <button type="submit"
