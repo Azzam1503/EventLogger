@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Images from "../assets/images/mjpru1.jpg"
+import Images from "../assets/images/games22.jpg"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import fromeImage from '../assets/images/frame.png'
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
@@ -126,7 +127,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
       </div> */}
 
       <div className="w-[33%] mt-[65px]">
-        <img src={fromeImage} className="rounded-lg" />
+        <img src={Images} className="rounded-lg" />
       </div>
       
     </div>

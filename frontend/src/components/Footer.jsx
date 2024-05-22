@@ -63,7 +63,7 @@ const Footer = () => {
                       className={` ${
                         BottomFooter.length - 1 === i
                           ? ""
-                          : "border-r border-richblack-600 dark:border-r dark:border-r-white cursor-pointer hover:text-richblack-50 transition-all duration-200"
+                          : "border-r border-richblack-600 cursor-pointer hover:text-richblack-50 transition-all duration-200"
                       } px-3 `}
                     >
                       <Link to={ele.split(" ").join("-").toLocaleLowerCase()}>

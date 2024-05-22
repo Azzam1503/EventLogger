@@ -44,34 +44,38 @@ const Event = ({user, isLoggedIn}) => {
     <div className='w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-x-[80px] mt-4'>
         
         <div className='w-[50%]'>
-            <h1 className='text-[#e37222] text-[36px] font-[600] font-inter leading-[44px] pt-6'>{event.title}</h1>
+            <h1 className='text-[#e37222] dark:text-richblack-700 text-[32px] font-[600] font-inter leading-[40px] pt-6'>{event.title}</h1>
                 <hr className="text-richblack-200 w-full"/>
-                <p className='text-[#f5f5f5] text-[16px] font-[500] font-inter leading-[24px] mt-6'>{event.description}</p>
+                <p className='text-[#f5f5f5] text-[16px] font-[500] font-inter leading-[24px] mt-6
+                            dark:text-richblack-600'>{event.description}</p>
                 <br/>
                 <hr className="text-richblack-200 w-full"/>
 
                 <div>
                      <div className='flex gap-x-3'>
-                        <FaLocationDot className='text-[rgba(227,114,34,0.67)] mt-[25px] text-[24px]'/>
-                        <h1 className='text-[#e37222] text-[24px] font-[600] font-inter leading-[28px] mt-6'>LOCATION</h1>    
+                        <FaLocationDot className='text-[rgba(227,114,34,0.67)] mt-[25px] text-[24px] dark:text-[#e84949]'/>
+                        <h1 className='text-[#e37222] dark:text-[#e84949] text-[24px] font-[600] font-inter leading-[28px] mt-6'>LOCATION</h1>    
                     </div>
-                        <h3 className='text-richblack-50 text-[18px] font-[500] font-inter leading-[24px] mt-6'>{event.venue}</h3>
+                        <h3 className='text-richblack-50 text-[18px] font-[500] font-inter leading-[24px] mt-6
+                                    dark:text-richblack-600'>{event.venue}</h3>
                 </div>
 
                 <div>
                      <div className='flex gap-x-3'>
-                        <BsFillCalendar2DateFill className='text-[rgba(227,114,34,0.67)] mt-[25px] text-[24px]'/>
-                        <h1 className='text-[#e37222] text-[24px] font-[600] font-inter leading-[28px] mt-6'>Calander</h1>    
+                        <BsFillCalendar2DateFill className='text-[rgba(227,114,34,0.67)] mt-[25px] text-[24px] dark:text-[#e84949]'/>
+                        <h1 className='text-[#e37222] dark:text-[#e84949] text-[24px] font-[600] font-inter leading-[28px] mt-6'>Calander</h1>    
                     </div>
-                        <h3 className='text-richblack-50 text-[18px] font-[500] font-inter leading-[24px] mt-6'>{event.date}</h3>
+                        <h3 className='text-richblack-50 text-[18px] font-[500] font-inter leading-[24px] mt-6
+                                    dark:text-richblack-600'>{event.date}</h3>
                 </div>
 
                 <div>
                      <div className='flex gap-x-3'>
-                        <BsStopwatchFill className='text-[rgba(227,114,34,0.67)] mt-[25px] text-[24px]'/>
-                        <h1 className='text-[#e37222] text-[24px] font-[600] font-inter leading-[28px] mt-6'>Time</h1>    
+                        <BsStopwatchFill className='text-[rgba(227,114,34,0.67)] mt-[25px] text-[24px] dark:text-[#e84949]'/>
+                        <h1 className='text-[#e37222] dark:text-[#e84949] text-[24px] font-[600] font-inter leading-[28px] mt-6'>Time</h1>    
                     </div>
-                        <h3 className='text-richblack-50 text-[18px] font-[500] font-inter leading-[24px] mt-6'>{event.time}</h3>
+                        <h3 className='text-richblack-50 text-[18px] font-[500] font-inter leading-[24px] mt-6
+                                   dark:text-richblack-600'>{event.time}</h3>
                 </div>  
 
                 <br/>
@@ -80,34 +84,41 @@ const Event = ({user, isLoggedIn}) => {
                 {event?.speakers && event.speakers.map((speaker) => (
                     <div key={speaker._id} className='pb-12'>
                         <div className='flex gap-x-3'>
-                            <BsPersonLinesFill className='text-[rgba(227,114,34,0.67)] mt-[22px] text-[32px]'/>
-                            <h3 className='text-[#e37222] text-[28px] font-[600] font-inter leading-[28px] mt-6'>Speaker</h3>
+                            <BsPersonLinesFill className='text-[rgba(227,114,34,0.67)] mt-[22px] text-[32px] dark:text-[#e84949]'/>
+                            <h3 className='text-[#e37222] dark:text-[#e84949] text-[28px] font-[600] font-inter leading-[28px] mt-6'>Speaker</h3>
                         </div>
                     <div className='flex gap-x-3'>
-                        <BsPersonCircle  className='text-white mt-7 text-[20px]'/>
-                        <h3 className='text-[#f5f5f5] text-[24px] font-[600] font-inter leading-[28px] mt-6'>{speaker.name}</h3>
+                        <BsPersonCircle  className='text-white mt-7 text-[20px] dark:text-[#006699]'/>
+                        <h3 className='text-[#f5f5f5] text-[24px] font-[600] font-inter leading-[28px] mt-6
+                                    dark:text-[#006699]'>{speaker.name}</h3>
                     </div > 
                         <div className='flex gap-3'>
                             <MdDescription className='text-white mt-5'/>   
-                            <h5 className='text-richblack-25 text-[16px] font-[500] font-inter leading-[24px] mt-4'>{speaker.about}</h5>
+                            <h5 className='text-richblack-25 text-[16px] font-[500] font-inter leading-[24px] mt-4
+                                      dark:text-richblack-600'>{speaker.about}</h5>
                         </div>
                     </div>
                     
                 ))}
         </div>
 
-         <div className='flex flex-col justify-center items-center'>
-            <img src={event?.imageUrl} className='rounded-[8px] w-[600px]' />
+        <div className='flex flex-col justify-center items-center'>
+
+           <div className='flex justify-center  w-[600px]'>
+               <img src={event?.imageUrl} className='rounded-[8px]' />
+           </div>
 
             <div className='flex font-bold text-3xl mt-6 justify-between gap-x-12'>
 
                 <div className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] px-[12px] py-[8px] 
-                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200'>
+                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
+                      duration-200 dark:bg-white dark:border-none'>
                    {isLoggedIn && event.userId === user.id &&<Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>}
                 </div>
 
                 <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 px-[12px] py-[8px] 
-                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200'>
+                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
+                       duration-200 dark:bg-white dark:border-none'>
                     {isLoggedIn && event.userId === user.id &&<button onClick={handleDelete}><MdDelete className=''/></button>}
                 </div>
             

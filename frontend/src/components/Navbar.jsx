@@ -33,13 +33,8 @@ const Navbar = (props) => {
       <div className='text-white w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-3'>
         <Link to="/">
             <div className='flex items-center gap-1'>
-<<<<<<< Updated upstream
-                    <p className='bg-[#f9f9f9] text-black rounded-full w-[32px] text-center font-[700] text-[24px] leading-[32px]'>E</p>
+                    <p className='bg-[#f9f9f9] text-richblack-700 rounded-full w-[32px] text-center font-[700] text-[24px] leading-[32px]'>E</p>
                     <p className='text-[#dadbdc] font-[600] text-[28px] leading-[36px]'>Event Logger</p>
-=======
-                    <p className='bg-richblack-25 text-black rounded-full w-[32px] text-center font-[600] text-[24px] leading-[32px]'>E</p>
-                    <p className='text-white font-[600] text-[28px] leading-[36px]'>Event Logger</p>
->>>>>>> Stashed changes
             </div>
         </Link>
 

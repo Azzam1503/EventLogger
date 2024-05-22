@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { IoColorFilter } from "react-icons/io5";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -54,39 +55,54 @@ const Events = () => {
 
   const departmentOptions = [
     { value: "", label: "Select a department" },
-    { value: "uni", label: "University" },
-    { value: "cs", label: "Computer Science" },
-    { value: "ei", label: "Electrical" },
-    { value: "ch", label: "Chemical" },
-    { value: "mh", label: "Mechanical" },
+    { value: "cs", label: "Computer Science & Information Technology" },
+    { value: "ei", label: "Electronic communication" },
+    { value: "ch", label: "Chemical engineering" },
+    { value: "mh", label: "Electrical engineering" },
     { value: "ec", label: "Electronics" },
-    { value: "math", label: "Maths" },
+    { value: "math", label: "Department of Mathematics" },
+    { value: "uni", label: "Other" },
   ];
 
   return (
     <>
          <div className="">
+            <div className="w-11/12 max-w-maxContent mx-auto  mt-10 border-2 dark:border-[#e84949] py-[12px] border-richblack-700">
+                  <div className="flex justify-center items-center gap-3 underline text-richblack-50 dark:text-[#e84949]">
+                    <IoColorFilter  className="text-richblack-50 text-[32px] leading-[36px] dark:text-[#e84949]"/>
+                    <h1 className="text-richblack-50 dark:text-[#e84949] font-[600] text-[32px] leading-[36px]">Filtering Option</h1>
+                  </div>
               <div className="w-11/12 max-w-maxContent mx-auto flex justify-between items-center border border-richblack-700
-                  mt-10 px-[12px] py-[18px]">
+                  mt-10 px-[12px] py-[18px] mb-6 dark:border-none">
+                 
                   <input
                     type="date"
                     value={fromDate}
                     onChange={handleFromDateChange}
+                    style={{
+                        boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                      }}
                     className=" rounded-[0.5rem] bg-richblack-800 px-[30px] py-[12px] border-none text-richblack-200 outline-none dark:bg-white
-                              dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+                              dark:text-richblack-600 text-[16px] font-[600] font-inter leading-[26px]"
                   />
                   <input
                     type="date"
                     value={toDate}
                     onChange={handleToDateChange}
+                    style={{
+                        boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                      }}
                     className=" rounded-[0.5rem] bg-richblack-800 px-[30px] py-[12px] border-none text-richblack-200 outline-none dark:bg-white
-                              dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+                    dark:text-richblack-600 text-[16px] font-[600] font-inter leading-[26px]"
                   />
                   <select
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
+                    style={{
+                        boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                      }}
                     className=" rounded-[0.5rem] bg-richblack-800 px-[30px] py-[12px] border-none text-richblack-200 outline-none dark:bg-white
-                              dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+                    dark:text-richblack-600 text-[16px] font-[600] font-inter leading-[26px] dark:shadow-[2px_2px_10px_[#1f1f1f]]"
                   >
                     {departmentOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -102,6 +118,7 @@ const Events = () => {
                     Apply Filter
                   </button>
                 </div>
+                </div>
           </div>
       <div
         className="text-white flex w-11/12 mx-auto max-w-maxContent justify-between items-center
@@ -111,7 +128,7 @@ const Events = () => {
         <h3 className="text-[#e37222] dark:text-[#e84949] ml-[80px] dark:text-richblack-5' text-[28px] font-[600] font-inter leading-[32px]">
           Title
         </h3>
-        <h3 className="text-[#e37222] dark:text-[#e84949] ml-[110px] text-[28px] font-[600] font-inter leading-[32px]">
+        <h3 className="text-[#e37222] dark:text-[#e84949] ml-[112px] text-[28px] font-[600] font-inter leading-[32px]">
           Location
         </h3>
         <h3 className="text-[#e37222] dark:text-[#e84949] text-[28px] font-[600] font-inter leading-[32px]">
@@ -130,7 +147,7 @@ const Events = () => {
           {filteredEvents.map((event) => (
             <div
               key={event._id}
-              className="flex justify-evenly items-center py-7 border border-richblack-200 "
+              className="flex justify-evenly items-center py-7 border border-richblack-200 gap-2"
             >
               <p className="text-richblue-25 dark:text-black text-[18px] font-[500] font-inter leading-[26px] w-[25%]">
                 {event.title}
