@@ -20,7 +20,7 @@ const Footer = () => {
 
                   {/* section 1 */}
                   <div className='flex gap-8 text-richblack-100 text-[16px] botder lg:border-richblack-700 dark:text-white'>
-                     <div className='hover:text-[#e84949] '>
+                     <div className='hover:text-[#e84949]'>
                         <Link to="/">Home</Link>
                      </div>
                      <div className='hover:text-[#e84949]'>
