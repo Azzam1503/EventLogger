@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import eventImages from "../assets/images/web-mjpru.jpg"
 import { FaSearch } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
@@ -43,7 +43,8 @@ const HomePage = () => {
                 <Link to="/events">
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                                 group hover:scale-95 transition-all duration-200'>
-                        <FaSearch className='text-[#e37222] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200'/>
+                        <FaSearch className='text-[#e37222] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
+                                    group-hover:dark:text-[#e84949]'/>
                         <Link to={"/events"} className='text-[#e37222] group-hover:text-richblack-50
                              group-hover:dark:text-richblack-500'>Search Events</Link>
                     </div>
@@ -51,7 +52,8 @@ const HomePage = () => {
                 <Link to="">
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                                        group hover:scale-95 transition-all duration-200'>
-                        <FaUserAlt className='text-[#e37222] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200'/>
+                        <FaUserAlt className='text-[#e37222] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
+                                  group-hover:dark:text-[#e84949]'/>
                         <Link to={"/user-profile"} className='text-[#e37222] group-hover:text-richblack-50
                         group-hover:dark:text-richblack-500'>My Event</Link>
                     </div>
@@ -59,7 +61,8 @@ const HomePage = () => {
             <Link to="">
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                               group hover:scale-95 transition-all duration-200'>
-                        <FaFolderOpen className='text-[#006699] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200'/>
+                        <FaFolderOpen className='text-[#006699] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
+                              group-hover:dark:text-[#e84949]'/>
                         <Link to={"/user-profile"} className='text-[#006699] group-hover:text-richblack-50
                         group-hover:dark:text-richblack-500'>Manage Events</Link>
                     </div>
@@ -67,7 +70,8 @@ const HomePage = () => {
             <Link to="/create-event">
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                                group hover:scale-95 transition-all duration-200'>
-                        <IoIosAddCircle className='text-[#669933] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200'/>
+                        <IoIosAddCircle className='text-[#669933] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
+                           group-hover:dark:text-[#e84949]'/>
                         <Link to={"/create-event"} className='text-[#669933] group-hover:text-richblack-50
                         group-hover:dark:text-richblack-500'>Create Event</Link>
                     </div>
@@ -82,7 +86,7 @@ const HomePage = () => {
                                 {pastEvents.map((event) =>(
                                 <Link key={event._id} to={`/event/${event._id}`}>
                                 <h5  className='text-[rgba(131,136,148,1)] font-inter font-[500] text-[16px] 
-                                     leading-[24px] border-b-2 rounded-[8px] p-1 hover:text-yellow-300
+                                     leading-[24px] border-b-2 rounded-[8px] p-1 hover:text-yellow-300 hover:dark:text-[#0504AA]
                                       dark:text-black'>{event.title}</h5></Link>
                             ))}
                     </div>
@@ -97,7 +101,8 @@ const HomePage = () => {
                         {upcomingEvents.map((event) =>(
                             <Link key={event._id} to={`/event/${event._id}`}>
                             <h5 className='text-[rgba(131,136,148,1)] font-inter font-[500] dark:text-black 
-                                    text-[16px] leading-[24px] border-b-2 rounded-[8px] p-1  hover:text-yellow-300'>{event.title}</h5></Link>
+                                    text-[16px] leading-[24px] border-b-2 rounded-[8px] p-1  hover:text-yellow-300
+                                    hover:dark:text-[#0504AA]'>{event.title}</h5></Link>
                         ))}
                     </div>
             </div>

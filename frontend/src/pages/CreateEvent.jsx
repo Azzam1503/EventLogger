@@ -126,14 +126,15 @@ const CreateEvent = ({ isLoggedIn }) => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-y-4 mt-[20px] w-[50%]"
       >
-        <h1 className="text-[2.5rem] font-semibold leading-[2.375rem] text-yellow-50">
+        <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-yellow-50 dark:text-[#e84949]">
           Create Event<spam className="">..</spam>
         </h1>
-        <hr className="text-yellow-200 w-[625px]" />
+        <hr className="text-yellow-200 dark:text-[#e84949] w-[625px]" />
+        <br/>
 
         <label
           htmlFor="title"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Title <sup className="text-pink-200">*</sup>
         </label>
@@ -148,12 +149,13 @@ const CreateEvent = ({ isLoggedIn }) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none
+                          dark:bg-white dark:text-richblack-700"
         />
 
         <label
           htmlFor="title"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Description <sup className="text-pink-200">*</sup>
         </label>
@@ -167,12 +169,13 @@ const CreateEvent = ({ isLoggedIn }) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none h-[250px]"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none h-[250px]
+                      dark:bg-white dark:text-richblack-700"
         />
 
         <label
           htmlFor="title"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Venue <sup className="text-pink-200">*</sup>
         </label>
@@ -186,12 +189,13 @@ const CreateEvent = ({ isLoggedIn }) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none
+                        dark:bg-white dark:text-richblack-700"
         />
 
         <label
           htmlFor="title"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Upload Image <sup className="text-pink-200">*</sup>
         </label>
@@ -204,12 +208,13 @@ const CreateEvent = ({ isLoggedIn }) => {
           }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-100 outline-none file:font-[600] file:font-inter
                        file:bg-richblack-700 file:text-richblack-25 file:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] file:hover:shadow-none
-                          file:hover:scale-95 transition-all duration-200 file:px-5 file:py-2 file:border-none file:rounded-[8px] file:text-[13px]"
+                          file:hover:scale-95 transition-all duration-200 file:px-5 file:py-2 file:border-none file:rounded-[8px] file:text-[13px]
+                          dark:bg-white dark:text-richblack-700 file:dark:bg-[#e84949] file:dark:text-richblack-5"
         />
 
         <label
           htmlFor="title"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Select Date <sup className="text-pink-200">*</sup>
         </label>
@@ -222,13 +227,14 @@ const CreateEvent = ({ isLoggedIn }) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none
+                       dark:bg-white dark:text-richblack-700"
         />
 
         {/* Time input */}
         <label
           htmlFor="title"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Select Time <sup className="text-pink-200">*</sup>
         </label>
@@ -241,18 +247,19 @@ const CreateEvent = ({ isLoggedIn }) => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none  "
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none
+                            dark:bg-white dark:text-richblack-700"
         />
 
         <div>
-          <h2 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5 mt-2">
+          <h2 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5 mt-2 dark:text-[#e84949]">
             Add speakers
           </h2>
-          <hr className="text-richblack-200" />
+          <hr className="text-richblack-200 dark:text-[#e84949]" />
           <br />
           <label
             htmlFor="speakerName"
-            className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+            className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
           >
             Name of speaker <sup className="text-pink-200">*</sup>
           </label>
@@ -266,14 +273,15 @@ const CreateEvent = ({ isLoggedIn }) => {
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none mt-2 mb-2"
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none mt-2 mb-2 
+                             dark:bg-white dark:text-richblack-700"
           />
 
           <br />
 
           <label
             htmlFor="speakerAbout"
-            className=" text-[0.875rem] leading-[1.375rem] text-richblack-5"
+            className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
           >
             About the Speaker <sup className="text-pink-200">*</sup>
           </label>
@@ -287,7 +295,8 @@ const CreateEvent = ({ isLoggedIn }) => {
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none mt-2"
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none mt-2
+                        dark:bg-white dark:text-richblack-700"
           />
 
           <button
@@ -295,7 +304,7 @@ const CreateEvent = ({ isLoggedIn }) => {
             onClick={appendSpeaker}
             className="mt-6 text-[13px] px-6 py-3 rounded-md font-bold bg-richblack-800 text-richblack-25 
                            shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95
-                                     transition-all duration-200 flex items-center gap-2"
+                                     transition-all duration-200 flex items-center gap-2 dark:bg-white dark:text-richblack-700"
           >
             Add speaker <IoIosAdd className="text-[20px]" />
           </button>
@@ -327,7 +336,7 @@ const CreateEvent = ({ isLoggedIn }) => {
         </ul>
         <label
           htmlFor="department"
-          className="text-[0.875rem] leading-[1.375rem] text-richblack-5"
+          className="text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
         >
           Department <sup className="text-pink-200">*</sup>
         </label>
@@ -337,7 +346,8 @@ const CreateEvent = ({ isLoggedIn }) => {
           value={eventFormData.department}
           required
           onChange={handleFormDataChange}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none
+                        dark:bg-white dark:text-richblack-700"
         >
           {departmentOptions.map((option) => (
             <option key={option.value} value={option.value}>
@@ -348,7 +358,7 @@ const CreateEvent = ({ isLoggedIn }) => {
         <button
           type="submit"
           className="mt-6 bg-yellow-50 text-black text-[13px] px-6 py-3 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)]
-                          hover:shadow-none hover:scale-95 transition-all duration-200"
+                          hover:shadow-none hover:scale-95 transition-all duration-200 dark:bg-[#e84949] dark:text-richblack-5"
         >
           Create Event
         </button>

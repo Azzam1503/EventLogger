@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Images from "../assets/images/playimges.jpg"
-import fromeImage from '../assets/images/games22.jpg'
+import Images from "../assets/images/games22.jpg"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import fromeImage from '../assets/images/frame.png'
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const navigate = useNavigate();
@@ -10,6 +11,9 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false)
+
   const inputChange = (e) => {
     const { name, value } = e.target;
     setLoginDetails((prevForm) => ({ ...prevForm, [name]: value }));
@@ -69,36 +73,49 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         </div>
 
         <label htmlFor="email"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-black">Email Address <sup className="text-pink-200">*</sup></label>
+          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600]">Email Address <sup className="text-pink-200">*</sup></label>
         <input
           type="text"
           id="email"
           name="email"
-          placeholder="Enter your Email"
+          placeholder="Enter your email address"
           required
           onChange={inputChange}
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none dark:bg-white
-          dark:text-black dark:box-shadow: 2px 2px 10px #1f1f1f"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none dark:bg-white 
+                            dark:text-richblack-700 dark:font-[600]"
         />
 
-        <label htmlFor="password"
-          className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-black">Password <sup className="text-pink-200">*</sup></label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-          onChange={inputChange}
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none dark:bg-white
-                       dark:box-shadow: 2px 2px 10px #1f1f1f dark:text-black"
-        />
+       <div className="relative">
+          <label htmlFor="password"
+              className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600]">Password <sup className="text-pink-200">*</sup></label>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+              onChange={inputChange}
+              style={{
+                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+              }}
+              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none
+                        dark:bg-white dark:text-richblack-700 dark:font-[600]"
+            />
+
+            <span
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+                >
+                {showPassword ? (
+                  <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                ) : (
+                  <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                )}
+            </span>
+       </div>
 
         <button type="submit"
           className="mt-6 rounded-[8px] bg-yellow-50 dark:bg-[#e84949] dark:text-white py-[8px] px-[12px] font-medium
@@ -110,7 +127,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
       </div> */}
 
       <div className="w-[33%] mt-[65px]">
-        <img src={fromeImage} className="rounded-lg" />
+        <img src={Images} className="rounded-lg" />
       </div>
       
     </div>
