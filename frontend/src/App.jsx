@@ -9,6 +9,7 @@ import UpdateEvent from "./pages/UpdateEvent";
 import Event from "./pages/Event";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
+import ExportEvents from "./ExportEvents";
 import axios from "axios";
 import "./index.css";
 
@@ -50,15 +51,17 @@ function App() {
 
     auth();
   },[])
-  // if (isLoggedIn === null) {
-  //   return <div>Loading...</div>;
-  // }
+
+  if (isLoggedIn === null) {
+    return <div>Loading...</div>;
+  }
    
   return (
     <div className="w-full min-h-screen bg-richblack-900 dark:bg-[#e7e7e7]">
     <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+          <Route path="/exportEvents" element={<ExportEvents isLoggedIn={isLoggedIn} />} />
           <Route path="/events" element={<Events user={user} />} />
           <Route path="/register" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
           <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
