@@ -4,9 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
 import { MdDeleteForever } from "react-icons/md";
+import Spinner from "../components/Spinner";
+
 
 const CreateEvent = ({ isLoggedIn }) => {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const [eventFormData, setEventFormData] = useState({
     title: "",
@@ -51,7 +55,7 @@ const CreateEvent = ({ isLoggedIn }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("title", eventFormData.title);
@@ -78,6 +82,7 @@ const CreateEvent = ({ isLoggedIn }) => {
         }
       );
       navigate(`/event/${response.data.newEvent._id}`);
+      setLoading(false);
       setEventFormData({
         title: "",
         description: "",
@@ -87,6 +92,7 @@ const CreateEvent = ({ isLoggedIn }) => {
       });
       setImage("");
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
@@ -122,7 +128,8 @@ const CreateEvent = ({ isLoggedIn }) => {
 
   return (
     <div className="w-11/12 max-w-maxContent flex justify-center mx-auto py-14">
-      <form
+    {
+      loading ? <Spinner/> :  <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-y-4 mt-[20px] w-[50%]"
       >
@@ -313,13 +320,13 @@ const CreateEvent = ({ isLoggedIn }) => {
           {speakers.map((speaker) => (
             <li
               key={speaker.id}
-              className="bg-richblack-800 px-[12px] py-[8px] flex gap-6 rounded-[8px]"
+              className="bg-richblack-800 px-[12px] py-[8px] flex gap-6 rounded-[8px] dark:bg-white"
             >
               <div className="w-[85%] py-2 flex flex-col space-y-3">
-                <h className="text-richblack-5 font-[600] text-[24px]">
+                <h className="text-richblack-5 dark:text-richblack-700 font-[600] text-[24px]">
                   {speaker.name}
                 </h>
-                <p className="text-richblack-25 w-[90%]">{speaker.about}</p>
+                <p className="text-richblack-25 dark:text-richblack-600 w-[90%]">{speaker.about}</p>
               </div>
 
               <button
@@ -327,7 +334,7 @@ const CreateEvent = ({ isLoggedIn }) => {
                 onClick={() => deleteSpeaker(speaker.id)}
                 className="flex my-auto items-center gap-2 h-[40px] text-[18px] px-6 py-3 rounded-md font-bold bg-richblack-700 text-pink-200 
                            shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95
-                                     transition-all duration-200"
+                             transition-all duration-200 dark:text-richblack-5 dark:bg-[#e84949]"
               >
                 <MdDeleteForever />
               </button>
@@ -363,6 +370,8 @@ const CreateEvent = ({ isLoggedIn }) => {
           Create Event
         </button>
       </form>
+    } 
+     
     </div>
   );
 };

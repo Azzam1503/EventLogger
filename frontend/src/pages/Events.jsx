@@ -56,10 +56,10 @@ const Events = () => {
   const departmentOptions = [
     { value: "", label: "Select a department" },
     { value: "cs", label: "Computer Science & Information Technology" },
-    { value: "ei", label: "Electronic communication" },
+    { value: "ei", label: " Instrumentation Engineering" },
     { value: "ch", label: "Chemical engineering" },
     { value: "mh", label: "Electrical engineering" },
-    { value: "ec", label: "Electronics" },
+    { value: "ec", label: "Electronic communication" },
     { value: "math", label: "Department of Mathematics" },
     { value: "uni", label: "Other" },
   ];
