@@ -1,5 +1,6 @@
 const Event = require("../model/Events");
 const uploadOnCloudinary = require("../utils/cloudinary");
+const ExcelJS = require("exceljs");
 
 const allEvents = async (req, res) => {
   try {
@@ -130,11 +131,49 @@ const homepageEvents = async (req, res) => {
   }
 }
 
+const downloadEvents = async (req, res) => {
+  try {
+    console.log("called excel")
+    const events = await Event.find({}).select("-imageUrl -description -speakers -userId -_id -showOnHomagePage -createdAt -updatedAt -__v");
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Events');
+    console.log(worksheet)
+
+    worksheet.columns = [
+      { header: 'Title', key: 'title', width: 30 },
+      { header: 'Location', key: 'venue', width: 30 },
+      { header: 'Date', key: 'date', width: 20 },
+      { header: 'Time', key: 'time', width: 20 },
+      { header: 'Department', key: 'department', width: 30 }
+    ];
+
+    events.forEach(event => {
+      worksheet.addRow(event);
+    });
+
+    res.setHeader(
+      'Content-Type',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    );
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename=events.xlsx'
+    );
+
+    await workbook.xlsx.write(res);
+    res.end();
+  
+  } catch (error) {
+    res.status(500).send('Error generating Excel file');
+  }
+}
+
 module.exports = {
   allEvents,
   craeteEvent,
   updateEvent,
   deleteEvent,
   getEvent,
-  homepageEvents
+  homepageEvents,
+  downloadEvents
 };
