@@ -58,7 +58,7 @@ const HomePage = () => {
                         group-hover:dark:text-richblack-500'>My Event</Link>
                     </div>
                 </Link>
-            <Link to="">
+            <Link to="/exportEvents">
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                               group hover:scale-95 transition-all duration-200'>
                         <FaFolderOpen className='text-[#006699] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200

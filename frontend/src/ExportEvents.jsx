@@ -55,44 +55,75 @@ const ExportEvents = () => {
   ];
 
   return (
-    <div className="">
+    <div className="max-w-maxContent mx-auto justify-center items-center w-[50%] gap-10 mt-10">
+        <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-blue-100 dark:text-[#e84949]"
+                 ><i> Download All Events in Excel Sheet</i></h1>
+
             <div className="flex flex-col gap-4">
+                 <label
+                    htmlFor="Starting Date"
+                    className="text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600]
+                       dark:text-[16px] mt-10"
+                  >
+                    Starting Date <sup className="text-pink-200">*</sup>
+                  </label>
                 <input
                     type="date"
                     value={fromDate}
                     onChange={(e) => setFromDate(e.target.value)}
-                    className="border rounded px-2 py-1"
                     placeholder="From Date"
+                    style={{
+                          boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                        }}
+                        className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none
+                                    dark:bg-white dark:text-richblack-700 font-[600]"
                 />
+                <label
+                    htmlFor="Ending Date"
+                    className="text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[16px]"
+                  >
+                    Ending Date <sup className="text-pink-200">*</sup>
+                  </label>
                 <input
                     type="date"
                     value={toDate}
                     onChange={(e) => setToDate(e.target.value)}
-                    className="border rounded px-2 py-1"
                     placeholder="To Date"
+                    style={{
+                            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                          }}
+                          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-300 outline-none
+                                      dark:bg-white dark:text-richblack-700 font-[600]"
                 />
+            
                   <label
-          htmlFor="department"
-          className="text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-600 dark:font-[600] dark:text-[18px]"
-        >
-          Department <sup className="text-pink-200">*</sup>
-        </label>
-        <select
-          name="department"
-          id="department"
-          value={department}
-          required
-          onChange={(e) => setDepartment(e.target.value)}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none
-                        dark:bg-white dark:text-richblack-700"
-        >
-          {departmentOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-                <button onClick={exportEvents} className="bg-blue-500 text-white rounded px-4 py-1">Export Events</button>
+                    htmlFor="department"
+                    className="text-[0.875rem] leading-[1.375rem] text-richblack-5 dark:text-richblack-700 dark:font-[600] dark:text-[16px]"
+                  >
+                    Department <sup className="text-pink-200">*</sup>
+                  </label>
+                <select
+                  name="department"
+                  id="department"
+                  value={department}
+                  required
+                  onChange={(e) => setDepartment(e.target.value)}
+                  style={{
+                            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                              }}
+                            className=" rounded-[0.5rem] bg-richblack-800 px-[30px] py-[12px] border-none text-richblack-200 outline-none dark:bg-white
+                            dark:text-richblack-500 text-[16px] font-[600] font-inter leading-[26px] dark:shadow-[2px_2px_10px_[#1f1f1f]]"
+                  >
+                  {departmentOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <button onClick={exportEvents}
+                className="mt-6 bg-yellow-50 text-black text-[13px] px-6 py-3 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)]
+                          hover:shadow-none hover:scale-95 transition-all duration-200 dark:bg-[#e84949] dark:text-richblack-5"
+                >Export Events</button>
             </div>
     </div>
   );
