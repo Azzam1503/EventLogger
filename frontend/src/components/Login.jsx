@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Images from "../assets/images/games22.jpg"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import fromeImage from '../assets/images/frame.png'
+import { Link } from "react-router-dom";
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const navigate = useNavigate();
@@ -101,8 +101,8 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none
-                        dark:bg-white dark:text-richblack-700 dark:font-[600]"
+              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5 outline-none 
+                        dark:bg-white dark:text-richblack-700 dark:font-[600] dark:shadow-[2px_2px_10px_rgb(31,31,31)]"
             />
 
             <span
@@ -115,6 +115,11 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
                   <AiOutlineEye fontSize={24} fill="#AFB2BF" />
                 )}
             </span>
+              <Link to="">
+                 <p className="mt-1 ml-auto max-w-max text-xs text-blue-100 dark:text-blue-200">
+                 Forgot Password
+                </p>
+              </Link>
        </div>
 
         <button type="submit"
@@ -126,7 +131,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         <img src={Images} className="rounded-lg" />
       </div> */}
 
-      <div className="w-[33%] mt-[65px]">
+      <div className="w-[33%] mt-[65px] dark:shadow-xl">
         <img src={Images} className="rounded-lg" />
       </div>
       

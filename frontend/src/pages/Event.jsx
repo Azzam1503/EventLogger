@@ -104,7 +104,7 @@ const Event = ({user, isLoggedIn}) => {
 
         <div className='flex flex-col justify-center items-center'>
 
-           <div className='flex justify-center  w-[600px]'>
+           <div className='flex justify-center h-[500px]'>
                <img src={event?.imageUrl} className='rounded-[8px]' />
            </div>
 
