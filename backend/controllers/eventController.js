@@ -133,11 +133,24 @@ const homepageEvents = async (req, res) => {
 
 const downloadEvents = async (req, res) => {
   try {
-    console.log("called excel")
-    const events = await Event.find({}).select("-imageUrl -description -speakers -userId -_id -showOnHomagePage -createdAt -updatedAt -__v");
+    const { fromDate, toDate, department } = req.query;
+    let filter = {};
+
+    if (fromDate) {
+      filter.date = { $gte: new Date(fromDate).toISOString().split('T')[0] };
+    }
+    if (toDate) {
+      filter.date = { ...filter.date, $lte: new Date(toDate).toISOString().split('T')[0] };
+    }
+    if (department) {
+      filter.department = department;
+    }
+
+    console.log('Filter:', filter);
+    const events = await Event.find(filter).select("-imageUrl -description -speakers -userId -_id -showOnHomagePage -createdAt -updatedAt -__v");
+    console.log(events)
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Events');
-    console.log(worksheet)
 
     worksheet.columns = [
       { header: 'Title', key: 'title', width: 30 },
