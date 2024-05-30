@@ -7,6 +7,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { FaFolderOpen } from "react-icons/fa6";
 import { IoIosAddCircle } from "react-icons/io";
 import Footer from '../components/Footer';
+import TextCard from '../components/TextCard';
 
 
 const HomePage = () => {
@@ -30,14 +31,14 @@ const HomePage = () => {
 
 
   return (
-    <>
-        <div className='text-white w-5/12 mx-auto flex flex-col justify-between items-center gap-3 mt-10'>
-            <h1 className='text-[#f1f2ff] text-[28px] leading-[32px] text-center
-               dark:text-black'>Welcome to Event Logger of MJPRU ! For the best experience, please 
-            <span className='bg-gradient-to-r from-blue-300 to-yellow-300 
-                text-transparent bg-clip-text text-[32px] font-[600]'>  <i>sign in to your event logger Account.</i></span></h1>
-            <p className='text-[24px] leading-[32px] dark:text-black'>Create Events <span className='text-pink-400'><i>and Moments!</i></span></p>
-        </div>
+        <>
+            <div className='text-white w-5/12 mx-auto flex flex-col justify-between items-center gap-3 mt-10'>
+                <h1 className='text-[#f1f2ff] text-[28px] leading-[32px] text-center
+                dark:text-black'>Welcome to Event Logger of MJPRU ! For the best experience, please 
+                <span className='bg-gradient-to-r from-blue-300 to-yellow-300 
+                    text-transparent bg-clip-text text-[32px] font-[600]'>  <i>sign in to your event logger Account.</i></span></h1>
+                <p className='text-[24px] leading-[32px] dark:text-black'>Create Events <span className='text-pink-400'><i>and Moments!</i></span></p>
+            </div>
 
             <div className='w-6/12 mx-auto flex justify-between items-center cursor-pointer mt-10'>
                 <Link to="/events">
@@ -107,12 +108,16 @@ const HomePage = () => {
                     </div>
             </div>
 
+            {/* Text card */}
+            <TextCard/>
+
+
             {/* Footer section */}
            
                 <Footer/>
             
-    </>
-  )
+        </>
+    )
 }
 
 export default HomePage
