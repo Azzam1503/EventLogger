@@ -132,7 +132,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        'custom': '5px 5px 10px rgba(31,31,31,1)',
+        'custom': '2px 2px 10px rgba(31,31,31,1)',
       },
       maxWidth: {
         maxContent: "1260px",
