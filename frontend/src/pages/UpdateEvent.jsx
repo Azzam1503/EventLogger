@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateEvent = ({ eventId }) => {
+const UpdateEvent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [eventData, setEventData] = useState({
@@ -15,23 +15,19 @@ const UpdateEvent = ({ eventId }) => {
     speakers: []
   });
 
-  // const [speaker, setSpeaker] = {
-  //   name: "",
-  //   about: ""
-  // }
-  console.log(eventData)
+  const [newSpeaker, setNewSpeaker] = useState({ name: "", about: "" });
+
   useEffect(() => {
     const fetchEventData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
-        console.log(response)
         setEventData(response.data.event);
       } catch (error) {
         console.error("Error fetching event data:", error);
       }
     };
     fetchEventData();
-  }, [eventId]);
+  }, [id]);
 
   const handleFormDataChange = (e) => {
     const { name, value } = e.target;
@@ -41,29 +37,28 @@ const UpdateEvent = ({ eventId }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setEventData((prevData) => ({ ...prevData, imageUrl: file }));
-  }; 20
+  };
 
-  const handleSpeakerChange = (index, field, value) => {
-    setEventData((prevData) => {
-      const updatedSpeakers = [...prevData.speakers];
-      updatedSpeakers[index][field] = value;
-      return { ...prevData, speakers: updatedSpeakers };
-    });
+  const handleSpeakerChange = (e) => {
+    const { name, value } = e.target;
+    setNewSpeaker((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleAddSpeaker = () => {
-    setEventData((prevData) => ({
-      ...prevData,
-      speakers: [...prevData.speakers, { name: "", about: "" }]
-    }));
+    if (newSpeaker.name && newSpeaker.about) {
+      setEventData((prevData) => ({
+        ...prevData,
+        speakers: [...prevData.speakers, newSpeaker]
+      }));
+      setNewSpeaker({ name: "", about: "" });
+    }
   };
 
-  const handleRemoveSpeaker = (id) => {
+  const handleRemoveSpeaker = (index) => {
     setEventData((prevData) => ({
       ...prevData,
-      speakers: prevData.speakers.filter((speaker) => speaker._id != id)
+      speakers: prevData.speakers.filter((_, i) => i !== index)
     }));
-    console.log(eventData.speakers)
   };
 
   const handleSubmit = async (e) => {
@@ -77,7 +72,6 @@ const UpdateEvent = ({ eventId }) => {
       formData.append("date", eventData.date);
       formData.append("time", eventData.time);
       formData.append("imageUrl", eventData.imageUrl);
-      // Append speakers
       eventData.speakers.forEach((speaker, index) => {
         formData.append(`speakers[${index}][name]`, speaker.name);
         formData.append(`speakers[${index}][about]`, speaker.about);
@@ -86,11 +80,11 @@ const UpdateEvent = ({ eventId }) => {
       const response = await axios.put(`http://localhost:3000/event/update-event/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-        }
+        },
+        withCredentials: true
       });
-      navigate(`/event/${id}`)
+      navigate(`/event/${id}`);
       console.log("Event updated successfully:", response.data);
-      // Redirect to event details page or any other page
     } catch (error) {
       console.error("Error updating event:", error);
     }
@@ -98,13 +92,11 @@ const UpdateEvent = ({ eventId }) => {
 
   return (
     <div className="w-11/12 max-w-maxContent flex justify-between mx-auto py-14">
-      <form onSubmit={handleSubmit}
-        className="w-[50%] flex flex-col mx-auto"
-      >
+      <form onSubmit={handleSubmit} className="w-[50%] flex flex-col mx-auto">
         <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">Update Event</h1>
         <br />
-        <label htmlFor="speakerName"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Title <sup className="text-pink-200">*</sup>
+        <label htmlFor="title" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+          Title <sup className="text-pink-200">*</sup>
         </label>
         <input
           type="text"
@@ -113,14 +105,11 @@ const UpdateEvent = ({ eventId }) => {
           onChange={handleFormDataChange}
           placeholder="Title"
           required
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
         />
 
-        <label htmlFor="speakerName"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Description <sup className="text-pink-200">*</sup>
+        <label htmlFor="description" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+          Description <sup className="text-pink-200">*</sup>
         </label>
         <textarea
           name="description"
@@ -128,14 +117,11 @@ const UpdateEvent = ({ eventId }) => {
           onChange={handleFormDataChange}
           placeholder="Description"
           required
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="w-full h-[450px] rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
         />
 
-        <label htmlFor="speakerName"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Venue <sup className="text-pink-200">*</sup>
+        <label htmlFor="venue" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+          Venue <sup className="text-pink-200">*</sup>
         </label>
         <input
           type="text"
@@ -144,14 +130,11 @@ const UpdateEvent = ({ eventId }) => {
           onChange={handleFormDataChange}
           placeholder="Venue"
           required
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
         />
 
-        <label htmlFor="speakerName"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Date <sup className="text-pink-200">*</sup>
+        <label htmlFor="date" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+          Date <sup className="text-pink-200">*</sup>
         </label>
         <input
           type="date"
@@ -159,14 +142,11 @@ const UpdateEvent = ({ eventId }) => {
           value={eventData.date}
           onChange={handleFormDataChange}
           required
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
         />
 
-        <label htmlFor="speakerName"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Time <sup className="text-pink-200">*</sup>
+        <label htmlFor="time" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+          Time <sup className="text-pink-200">*</sup>
         </label>
         <input
           type="time"
@@ -174,65 +154,55 @@ const UpdateEvent = ({ eventId }) => {
           value={eventData.time}
           onChange={handleFormDataChange}
           required
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
         />
 
-        <label htmlFor="speakerName"
-          className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Uploade file <sup className="text-pink-200">*</sup>
+        <label htmlFor="image" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+          Upload file <sup className="text-pink-200">*</sup>
         </label>
         <input
           type="file"
           name="image"
           onChange={handleImageChange}
-          style={{
-            boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-          }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 outline-none"
         />
+
         {/* Render speakers fields */}
         <div>
           <h2 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5 mt-4">Speakers</h2>
           <hr className="text-richblack-200" />
           <br />
-          {eventData.speakers && eventData.speakers.map((speaker) => (
-            <div key={speaker._id}>
-              <label htmlFor="speakerName"
-                className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">Name of Speaker <sup className="text-pink-200">*</sup>
-              </label>
-              <input
-                type="text"
-                value={speaker.name}
-                onChange={(e) => handleSpeakerChange(speaker._id, "name", e.target.value)}
-                placeholder="Speaker Name"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
-                className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 mt-2 outline-none"
-              />
-              <br />
-              <br />
-              <label htmlFor="speakerName"
-                className=" text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">About of Speaker <sup className="text-pink-200">*</sup>
-              </label>
-              <input
-                type="text"
-                value={speaker.about}
-                onChange={(e) => handleSpeakerChange(speaker._id, "about", e.target.value)}
-                placeholder="About Speaker"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
-                className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 mt-2 outline-none"
-              />
-              <button type="button" onClick={handleAddSpeaker}
-                className="mt-6 rounded-[8px] bg-blue-400 py-[8px] px-[12px] font-medium text-richblack-25">Add Speaker</button>
+          {eventData.speakers.map((speaker, index) => (
+            <div key={index} className="mb-4">
+              <p className="text-richblack-5">{speaker.name} - {speaker.about}</p>
+              <button type="button" onClick={() => handleRemoveSpeaker(index)}
+                className="mt-2 rounded-[8px] bg-red-400 py-[8px] px-[12px] font-medium text-richblack-25">Remove</button>
             </div>
           ))}
-          <button type="button" onClick={() => handleRemoveSpeaker(speaker._id)}
-            className="mt-6 rounded-[8px] bg-blue-400 py-[8px] px-[12px] font-medium text-richblack-25">Remove Speaker</button>
+          <label htmlFor="newSpeakerName" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+            Name of Speaker <sup className="text-pink-200">*</sup>
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={newSpeaker.name}
+            onChange={handleSpeakerChange}
+            placeholder="Speaker Name"
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 mt-2 outline-none"
+          />
+          <label htmlFor="newSpeakerAbout" className="text-[0.875rem] leading-[1.375rem] text-richblack-5 py-2">
+            About Speaker <sup className="text-pink-200">*</sup>
+          </label>
+          <input
+            type="text"
+            name="about"
+            value={newSpeaker.about}
+            onChange={handleSpeakerChange}
+            placeholder="About Speaker"
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] border-none text-richblack-5 mt-2 outline-none"
+          />
+          <button type="button" onClick={handleAddSpeaker}
+            className="mt-4 rounded-[8px] bg-blue-400 py-[8px] px-[12px] font-medium text-richblack-25">Add Speaker</button>
         </div>
         <button type="submit"
           className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">Update Event</button>
@@ -241,6 +211,4 @@ const UpdateEvent = ({ eventId }) => {
   );
 };
 
-export default UpdateEvent
-
-
+export default UpdateEvent;

@@ -9,7 +9,7 @@ import UpdateEvent from "./pages/UpdateEvent";
 import Event from "./pages/Event";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import ExportEvents from "./ExportEvents";
+import ExportEvents from "./pages/ExportEvents";
 import axios from "axios";
 import "./index.css";
 
@@ -52,9 +52,9 @@ function App() {
     auth();
   },[])
 
-  // if (isLoggedIn === null) {
-  //   return <div>Loading...</div>;
-  // }
+  if (isLoggedIn === null) {
+    return <div>Loading...</div>;
+  }
    
   return (
     <div className="w-full min-h-screen bg-richblack-900 dark:bg-[#e7e7e7]">

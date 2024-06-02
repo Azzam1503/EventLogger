@@ -56,7 +56,7 @@ const ExportEvents = () => {
 
   return (
     <div className="max-w-maxContent mx-auto justify-center items-center w-[50%] gap-10 mt-10">
-        <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-blue-100 dark:text-[#e84949]"
+        <h1 className="text-[2.8rem] font-semibold leading-[2.375rem] text-blue-100 dark:text-[#e84949]"
                  ><i> Download All Events in Excel Sheet</i></h1>
 
             <div className="flex flex-col gap-4">

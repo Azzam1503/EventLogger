@@ -50,7 +50,7 @@ const HomePage = () => {
                              group-hover:dark:text-richblack-500'>Search Events</Link>
                     </div>
                 </Link>
-                <Link to="">
+                <Link to={"/user-profile"}>
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                                        group hover:scale-95 transition-all duration-200'>
                         <FaUserAlt className='text-[#e37222] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
@@ -59,13 +59,13 @@ const HomePage = () => {
                         group-hover:dark:text-richblack-500'>My Event</Link>
                     </div>
                 </Link>
-            <Link to="/exportEvents">
+            <Link to={"/exportEvents"}>
                     <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
                               group hover:scale-95 transition-all duration-200'>
                         <FaFolderOpen className='text-[#006699] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
                               group-hover:dark:text-[#e84949]'/>
-                        <Link to={"/user-profile"} className='text-[#006699] group-hover:text-richblack-50
-                        group-hover:dark:text-richblack-500'>Manage Events</Link>
+                        <Link to={"/exportEvents"} className='text-[#006699] group-hover:text-richblack-50
+                        group-hover:dark:text-richblack-500'>Export Events</Link>
                     </div>
             </Link>
             <Link to="/create-event">
