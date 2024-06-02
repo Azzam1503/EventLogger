@@ -133,7 +133,7 @@ const CreateEvent = ({ isLoggedIn }) => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-y-4 mt-[20px] w-[50%]"
       >
-        <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-yellow-50 dark:text-[#e84949]">
+        <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-yellow-50 dark:text-[#e84949] dark:shadow-md dark:py-3 dark:w-full">
           Create Event<spam className="">..</spam>
         </h1>
         <hr className="text-yellow-200 dark:text-[#e84949] w-[625px]" />
