@@ -34,7 +34,9 @@ const Event = ({user, isLoggedIn}) => {
             }
                     
           const response = await axios.delete(
-            "http://localhost:3000/event/delete-event/" + id
+            `http://localhost:3000/event/delete-event/${id}`,{
+                withCredentials: true
+            }
           );
           navigate("/");
           console.log("event deleted successfully");
