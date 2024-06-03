@@ -86,14 +86,18 @@ const updateEvent = async (req, res) => {
 const deleteEvent = async (req, res) => {
   try {
     const { id } = req.params;
-
+    const check = await Event.findById(id);
+    console.log("delte....", req.user)
+    if (JSON.stringify(check.userId) !== JSON.stringify(req.user._id)) {
+      return res.status(403).json({ message: "You are not authorized to update this event" });
+    }
     const event = await Event.findByIdAndDelete(id);
 
     return res
       .status(200)
       .json({ message: "Event deleted Successfully", event });
   } catch (error) {
-    return res.json(411).json({ message: "Error while deleting event" });
+    return res.status(411).json({ message: "Error while deleting event" });
   }
 };
 
