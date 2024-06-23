@@ -23,7 +23,7 @@ const Signup = () => {
   const checkAuth = async () => {
     try {
       const response = await axios.get(
-        "https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/check-auth",
+        "https://eventlogger.onrender.com/user/check-auth",
         {
           withCredentials: true,
         }
@@ -53,7 +53,7 @@ const Signup = () => {
       formData.append("password", signupFormData.password);
       console.log(image)
       const response = await axios.post(
-        "https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/register",
+        "https://eventlogger.onrender.com/user/register",
         formData,
         {
           headers: {

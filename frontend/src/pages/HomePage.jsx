@@ -16,7 +16,7 @@ const HomePage = () => {
     
     const fetchHomePageEvents = async () =>{
         try {
-            const response = await axios.get("https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/event/homepage-events");
+            const response = await axios.get("hhttps://eventlogger.onrender.com/event/homepage-events");
             setPastEvents(response.data.pastEvents);
             setUpcomingEvents(response.data.upcomingEvents);
         } catch (error) {

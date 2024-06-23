@@ -72,7 +72,7 @@ const CreateEvent = ({ isLoggedIn }) => {
       }
 
       const response = await axios.post(
-        "https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/event/create-event",
+        "https://eventlogger.onrender.com/event/create-event",
         formData,
         {
           headers: {

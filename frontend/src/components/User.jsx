@@ -8,7 +8,7 @@ const User = ({user}) => {
   const [userData, setUserData] = useState({});
   const getUser = async () => {
     try {
-      const response = await axios.get(`https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/profile`, {
+      const response = await axios.get(`https://eventlogger.onrender.com/user/profile`, {
         withCredentials: true,
       });
       console.log(response)

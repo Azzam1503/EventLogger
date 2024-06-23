@@ -26,7 +26,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const checkAuth = async () => {
     try {
       const response = await axios.get(
-        "https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/check-auth",
+        "https://eventlogger.onrender.com/user/check-auth",
         {
           withCredentials: true,
         }
@@ -42,7 +42,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/sign-in",
+        "https://eventlogger.onrender.com//user/sign-in",
         loginDetails,
         {
           withCredentials: true,
