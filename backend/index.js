@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'localhost:5173',
+    origin: 'https://event-logger-gmkxrrjv8-azzam1503s-projects.vercel.app/',
     credentials: true,
   })
 );
