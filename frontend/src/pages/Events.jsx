@@ -15,7 +15,7 @@ const Events = () => {
   }, []);
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/event/allEvents");
+      const response = await axios.get("https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/event/allEvents");
       setEvents(response.data.events);
       setFilteredEvents(response.data.events);
     } catch (error) {

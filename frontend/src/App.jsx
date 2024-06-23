@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const auth = async () => {
       try {
-        const res =  await axios.get("http://localhost:3000/user/check-auth",{withCredentials: true});
+        const res =  await axios.get("https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/check-auth",{withCredentials: true});
         const {email, _id, fullName} = res.data;
         console.log(res)
         if(res.status === 200){

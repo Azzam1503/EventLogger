@@ -18,7 +18,7 @@ const Navbar = (props) => {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post("http://localhost:3000/user/logout", {},{
+            const response = await axios.post("https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/logout", {},{
                 withCredentials: true
             });
             console.log(response);

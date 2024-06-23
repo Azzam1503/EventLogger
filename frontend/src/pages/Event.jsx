@@ -15,7 +15,7 @@ const Event = ({user, isLoggedIn}) => {
     const {id} = useParams();
 
     const fetchEvent = async () => {
-        const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
+        const response = await axios.get(`https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/event/get-event/${id}`);
         console.log(response.data.event.userId);
         setEvent(response.data.event);
     }
@@ -34,7 +34,7 @@ const Event = ({user, isLoggedIn}) => {
             }
                     
           const response = await axios.delete(
-            `http://localhost:3000/event/delete-event/${id}`,{
+            `https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/event/delete-event/${id}`,{
                 withCredentials: true
             }
           );

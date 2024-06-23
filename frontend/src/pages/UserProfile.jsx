@@ -10,7 +10,7 @@ const UserProfile = ({user}) => {
   const [pastEvents, setPastEvents] = useState([]);
   const fetchEvents = async () =>{
     try {
-      const response = await axios.get("http://localhost:3000/user/events", {
+      const response = await axios.get("https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/user/events", {
         withCredentials: true
       });
       setPastEvents(response.data.pastEvents.reverse());

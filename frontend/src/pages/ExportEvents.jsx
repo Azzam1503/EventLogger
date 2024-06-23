@@ -8,7 +8,7 @@ const ExportEvents = () => {
   const exportEvents = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/event/downloadEvents",
+        "https://event-logger-9dd5-b741sl88m-azzam1503s-projects.vercel.app/event/downloadEvents",
         {
         params: {
                 fromDate,
