@@ -42,7 +42,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://eventlogger.onrender.com//user/sign-in",
+        "https://eventlogger.onrender.com/user/sign-in",
         loginDetails,
         {
           withCredentials: true,
