@@ -11,7 +11,6 @@ app.use(
   cors({
     origin: true,
     methods: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
