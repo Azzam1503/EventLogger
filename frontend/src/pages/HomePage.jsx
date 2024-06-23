@@ -16,7 +16,7 @@ const HomePage = () => {
     
     const fetchHomePageEvents = async () =>{
         try {
-            const response = await axios.get("hhttps://eventlogger.onrender.com/event/homepage-events");
+            const response = await axios.get("https://eventlogger.onrender.com/event/homepage-events");
             setPastEvents(response.data.pastEvents);
             setUpcomingEvents(response.data.upcomingEvents);
         } catch (error) {

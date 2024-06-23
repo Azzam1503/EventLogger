@@ -34,7 +34,7 @@ const Event = ({user, isLoggedIn}) => {
             }
                     
           const response = await axios.delete(
-            `hhttps://eventlogger.onrender.com/event/delete-event/${id}`,{
+            `https://eventlogger.onrender.com/event/delete-event/${id}`,{
                 withCredentials: true
             }
           );
