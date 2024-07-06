@@ -8,7 +8,7 @@ const User = ({user}) => {
   const [userData, setUserData] = useState({});
   const getUser = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/user/profile`, {
+      const response = await axios.get(`https://eventlogger.onrender.com/user/profile`, {
         withCredentials: true,
       });
       console.log(response)

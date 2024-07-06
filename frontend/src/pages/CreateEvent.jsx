@@ -72,7 +72,7 @@ const CreateEvent = ({ isLoggedIn }) => {
       }
 
       const response = await axios.post(
-        "http://localhost:3000/event/create-event",
+        "https://eventlogger.onrender.com/event/create-event",
         formData,
         {
           headers: {

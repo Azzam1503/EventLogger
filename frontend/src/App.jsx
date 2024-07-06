@@ -9,7 +9,7 @@ import UpdateEvent from "./pages/UpdateEvent";
 import Event from "./pages/Event";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import ExportEvents from "./ExportEvents";
+import ExportEvents from "./pages/ExportEvents";
 import axios from "axios";
 import "./index.css";
 
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const auth = async () => {
       try {
-        const res =  await axios.get("http://localhost:3000/user/check-auth",{withCredentials: true});
+        const res =  await axios.get("https://eventlogger.onrender.com/user/check-auth",{withCredentials: true});
         const {email, _id, fullName} = res.data;
         console.log(res)
         if(res.status === 200){

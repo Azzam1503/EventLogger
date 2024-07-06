@@ -19,7 +19,11 @@ const Navbar = (props) => {
 
     const handleLogout = async () => {
         try {
+<<<<<<< HEAD
             const response = await axios.post("http://localhost:3000/user/logout", {}, {
+=======
+            const response = await axios.post("https://eventlogger.onrender.com/user/logout", {},{
+>>>>>>> main
                 withCredentials: true
             });
             console.log(response);

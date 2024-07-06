@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import {useParams, Link} from "react-router-dom";
+import {useParams, Link, useNavigate} from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsStopwatchFill } from "react-icons/bs";
 import { BsFillCalendar2DateFill } from "react-icons/bs";
@@ -11,12 +11,12 @@ import { FaRegEdit } from "react-icons/fa";
 
 const Event = ({user, isLoggedIn}) => {
     const [event, setEvent] = useState({})
-
+    const navigate = useNavigate();
     const {id} = useParams();
 
     const fetchEvent = async () => {
-        const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
-        // console.log(response);
+        const response = await axios.get(`https://eventlogger.onrender.com/event/get-event/${id}`);
+        console.log(response.data.event.userId);
         setEvent(response.data.event);
     }
 
@@ -28,16 +28,21 @@ const Event = ({user, isLoggedIn}) => {
 
     const handleDelete = async () => {
         try {
+            const confirmDelete = window.confirm("Are you sure you want to delete this event?");
+            if (!confirmDelete) {
+              return;
+            }
+                    
           const response = await axios.delete(
-            "http://localhost:3000/event/delete-event/" + id
+            `https://eventlogger.onrender.com/event/delete-event/${id}`,{
+                withCredentials: true
+            }
           );
+          navigate("/");
           console.log("event deleted successfully");
         } catch (error) {
           console.log("error while deleting the event");
         }
-    
-        const remainingEvents = events.filter((event) => event._id != id);
-        setEvents(remainingEvents);
       };
 
   return (
@@ -105,12 +110,17 @@ const Event = ({user, isLoggedIn}) => {
 
         <div className='flex flex-col items-center mt-8 w-full md:w-1/2'>
 
+<<<<<<< HEAD
            <div className='flex justify-center w-full'>
+=======
+           <div className='flex justify-center w-[600px] h-[500px]'>
+>>>>>>> main
                <img src={event?.imageUrl} className='rounded-[8px]' />
            </div>
 
             <div className='flex font-bold text-3xl mt-6 justify-between gap-x-12'>
 
+<<<<<<< HEAD
             
                    {isLoggedIn && event.userId === user.id &&<Link className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
@@ -128,6 +138,22 @@ const Event = ({user, isLoggedIn}) => {
         </div>
        </div>
         
+=======
+                {isLoggedIn && event.userId === user.id &&  <div className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] px-[12px] py-[8px] 
+                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
+                      duration-200 dark:bg-white dark:border-none'>
+                   <Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>
+                </div>}
+
+                {isLoggedIn && event.userId === user.id && <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 px-[12px] py-[8px] 
+                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
+                       duration-200 dark:bg-white dark:border-none'>
+                    <button onClick={handleDelete}><MdDelete className=''/></button>
+                </div>}
+            
+            </div>
+        </div>
+>>>>>>> main
     </div>
   )
 }

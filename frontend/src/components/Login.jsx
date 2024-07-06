@@ -26,7 +26,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
   const checkAuth = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/user/check-auth",
+        "https://eventlogger.onrender.com/user/check-auth",
         {
           withCredentials: true,
         }
@@ -42,7 +42,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/sign-in",
+        "https://eventlogger.onrender.com/user/sign-in",
         loginDetails,
         {
           withCredentials: true,

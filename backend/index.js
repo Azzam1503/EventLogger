@@ -4,12 +4,13 @@ const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectToDb = require("./config/connectToDb");
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: true,
+    origin: 'https://event-logger-gmkxrrjv8-azzam1503s-projects.vercel.app',
     credentials: true,
   })
 );
@@ -19,6 +20,6 @@ app.use("/event", require("./routes/event"));
 app.get("/", (req, res) => {
   res.send("Hello");
 });
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is runnig on 3000");
 });

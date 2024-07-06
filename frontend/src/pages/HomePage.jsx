@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import TextCard from "../components/TextCard";
 
 const HomePage = () => {
+<<<<<<< HEAD
   const [pastEvents, setPastEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [tabs, setTabs] = useState("upcoming");
@@ -30,6 +31,21 @@ const HomePage = () => {
     fetchHomePageEvents();
   }, []);
 
+=======
+    const [pastEvents, setPastEvents] = useState([]);
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
+    
+    const fetchHomePageEvents = async () =>{
+        try {
+            const response = await axios.get("https://eventlogger.onrender.com/event/homepage-events");
+            setPastEvents(response.data.pastEvents);
+            setUpcomingEvents(response.data.upcomingEvents);
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+>>>>>>> main
 
 
 
@@ -78,6 +94,7 @@ const HomePage = () => {
                 >
                   Search Events
                 </Link>
+<<<<<<< HEAD
               </div>
             </Link>
             <Link to="">
@@ -115,6 +132,25 @@ const HomePage = () => {
                   Manage Events
                 </Link>
               </div>
+=======
+                <Link to={"/user-profile"}>
+                    <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
+                                       group hover:scale-95 transition-all duration-200'>
+                        <FaUserAlt className='text-[#e37222] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
+                                  group-hover:dark:text-[#e84949]'/>
+                        <Link to={"/user-profile"} className='text-[#e37222] group-hover:text-richblack-50
+                        group-hover:dark:text-richblack-500'>My Event</Link>
+                    </div>
+                </Link>
+            <Link to={"/exportEvents"}>
+                    <div className='flex flex-col items-center gap-y-3 text-[22px] font-[600] font-inter 
+                              group hover:scale-95 transition-all duration-200'>
+                        <FaFolderOpen className='text-[#006699] text-[64px] font-[600] font-inter leading-[72px] group-hover:text-yellow-200
+                              group-hover:dark:text-[#e84949]'/>
+                        <Link to={"/exportEvents"} className='text-[#006699] group-hover:text-richblack-50
+                        group-hover:dark:text-richblack-500'>Export Events</Link>
+                    </div>
+>>>>>>> main
             </Link>
             <Link to="/create-event">
               <div

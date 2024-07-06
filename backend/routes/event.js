@@ -12,8 +12,8 @@ router.post(
   eventController.craeteEvent
 );
 router.get("/get-event/:id", eventController.getEvent);
-router.put("/update-event/:id", upload.single("imageUrl"), eventController.updateEvent);
-router.delete("/delete-event/:id", eventController.deleteEvent);
+router.put("/update-event/:id", upload.single("imageUrl"), authMiddleware, eventController.updateEvent);
+router.delete("/delete-event/:id", authMiddleware, eventController.deleteEvent);
 router.get("/homepage-events", eventController.homepageEvents);
 router.get("/downloadEvents", eventController.downloadEvents);
 

@@ -23,7 +23,7 @@ const Signup = () => {
   const checkAuth = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/user/check-auth",
+        "https://eventlogger.onrender.com/user/check-auth",
         {
           withCredentials: true,
         }
@@ -53,7 +53,7 @@ const Signup = () => {
       formData.append("password", signupFormData.password);
       console.log(image)
       const response = await axios.post(
-        "http://localhost:3000/user/register",
+        "https://eventlogger.onrender.com/user/register",
         formData,
         {
           headers: {
