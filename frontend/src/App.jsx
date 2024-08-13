@@ -57,7 +57,7 @@ function App() {
   // }
    
   return (
-    <div className="w-full min-h-screen bg-richblack-900 dark:bg-[#e7e7e7]">
+    <div className="w-full min-h-screen bg-richblack-900 dark:bg-[#ede9fe]">
     <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />

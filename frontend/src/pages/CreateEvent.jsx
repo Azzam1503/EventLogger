@@ -127,16 +127,16 @@ const CreateEvent = ({ isLoggedIn }) => {
   ];
 
   return (
-    <div className="w-11/12 max-w-maxContent flex justify-center mx-auto py-14">
+    <div className="w-full max-w-maxContent flex justify-center mx-auto py-14 px-5 md:px-0">
     {
       loading ? <Spinner/> :  <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-y-4 mt-[20px] w-[50%]"
+        className="flex flex-col gap-y-4 mt-[20px] w-full md:w-[50%]"
       >
         <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-yellow-50 dark:text-[#e84949] dark:shadow-md dark:py-3 dark:w-full">
           Create Event<spam className="">..</spam>
         </h1>
-        <hr className="text-yellow-200 dark:text-[#e84949] w-[625px]" />
+        <hr className="text-yellow-200 dark:text-[#e84949] max-w-[625px]" />
         <br/>
 
         <label

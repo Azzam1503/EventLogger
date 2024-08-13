@@ -1,7 +1,11 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { IoColorFilter } from "react-icons/io5";
+
+
+import { Table } from "flowbite-react";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -66,13 +70,13 @@ const Events = () => {
 
   return (
     <>
-         <div className="">
-            <div className="w-11/12 max-w-maxContent mx-auto  mt-10 border-2 dark:border-[#e84949] py-[12px] border-richblack-700">
+         <div className="mb-12">
+            <div className="w-11/12 max-w-maxContent mx-auto p-5  mt-10 border-2 rounded-xl dark:border-[#e84949] py-[12px] border-richblack-700">
                   <div className="flex justify-center items-center gap-3 underline text-richblack-50 dark:text-[#e84949]">
                     <IoColorFilter  className="text-richblack-50 text-[32px] leading-[36px] dark:text-[#e84949]"/>
                     <h1 className="text-richblack-50 dark:text-[#e84949] font-[600] text-[32px] leading-[36px]">Filtering Option</h1>
                   </div>
-              <div className="w-11/12 max-w-maxContent mx-auto flex justify-between items-center border border-richblack-700
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-maxContent mx-auto xl:flex justify-between items-center rounded-xl border border-richblack-700
                   mt-10 px-[12px] py-[18px] mb-6 dark:border-none">
                  
                   <input
@@ -112,7 +116,7 @@ const Events = () => {
                   </select>
                   <button
                     onClick={handleFilter}
-                    className="border border-richblack-700 rounded-[8px] bg-richblack-800 dark:bg-[#e84949] dark:border-none dark:text-white px-[12px] py-[8px] text-richblack-100
+                    className="border border-richblack-700  rounded-[12px] bg-richblack-800 dark:bg-[#e84949] dark:border-none dark:text-white px-[12px] py-[8px] text-richblack-100
                       shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] font-[600] hover:shadow-none hover:scale-95 transition-all duration-200"
                   >
                     Apply Filter
@@ -120,7 +124,7 @@ const Events = () => {
                 </div>
                 </div>
           </div>
-      <div
+      {/* <div
         className="text-white flex w-11/12 mx-auto max-w-maxContent justify-between items-center
                       mt-10 border border-richblack-200 py-6"
       >
@@ -140,8 +144,8 @@ const Events = () => {
         <h3 className="text-[#e37222] dark:text-[#e84949] text-[28px] font-[600] font-inter leading-[32px] mr-[40px] ">
           Option
         </h3>
-      </div>
-      <div className="w-11/12 max-w-maxContent mx-auto flex flex-row justify-between items-center mt-10 text-white">
+      </div> */}
+      {/* <div className="w-11/12 max-w-maxContent mx-auto flex flex-row justify-between items-center mt-10 text-white">
         <div className="w-full flex flex-col">
   
           {filteredEvents.map((event) => (
@@ -176,7 +180,53 @@ const Events = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
+
+    <div className="flex justify-center w-full sm:px-6 px-5 md:px-20 xl:px-0 pb-10">
+    <div className="overflow-x-auto w-full rounded-xl  max-w-maxContent">
+      <Table>
+        <Table.Head className="dark:bg-white bg-gray-600 w-full">
+          <Table.HeadCell className="dark:bg-white dark:text-black text-white bg-gray-600">Title</Table.HeadCell>
+          <Table.HeadCell className="dark:bg-white dark:text-black text-white bg-gray-600">Location</Table.HeadCell>
+          <Table.HeadCell className="dark:bg-white dark:text-black text-white bg-gray-600 ">Date</Table.HeadCell>
+          <Table.HeadCell className="dark:bg-white dark:text-black text-white bg-gray-600">Time</Table.HeadCell>
+          <Table.HeadCell className="dark:bg-white dark:text-black text-white bg-gray-600">
+          Option
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+        {
+          filteredEvents?.map((event,index) => (
+            <Table.Row key={index} className="dark:bg-white dark:border-gray-700 bg-gray-800 dark:text-black text-white">
+            <Table.Cell className="whitespace-nowrap font-medium dark:text-gray-900 text-white">
+             {event?.title}
+            </Table.Cell>
+            <Table.Cell>{event?.venue}</Table.Cell>
+            <Table.Cell>{event?.date}</Table.Cell>
+            <Table.Cell>{event?.time}</Table.Cell>
+            <Table.Cell>
+            <button
+                className="border border-richblack-700 rounded-[8px] bg-richblack-800 px-[12px] py-[8px] dark:bg-[#e84949] dark:border-none
+                 shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all duration-200"
+              >
+                <Link
+                  to={`/event/${event._id}`}
+                  className="text-richblack-100 dark:text-richblack-5 text-[13px] font-[600] font-inter leading-[21px]
+                                                           w-[20%]"
+                >
+                  View
+                </Link>
+              </button>
+            </Table.Cell>
+          </Table.Row>
+          ))
+        }
+          
+       
+        </Table.Body>
+      </Table>
+    </div>
+    </div>
     </>
   );
 };

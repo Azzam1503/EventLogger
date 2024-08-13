@@ -68,10 +68,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-11/12 max-w-maxContent flex justify-between mx-auto py-14 gap-x-12">
-      <form onSubmit={handleSubmit} className="flex w-[45%] flex-col gap-y-2 mt-10"> 
+    <div className="w-full md:px-14 px-5 max-w-maxContent flex md:flex-row flex-col justify-between mx-auto py-14 gap-x-12">
+      <form onSubmit={handleSubmit} className="flex w-full md:w-[45%] flex-col gap-y-2 mt-3 md:10"> 
 
-        <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">
+        <div className=" w-11/12 max-w-[450px] md:mx-0">
           <h1 className="text-[30px] font-inter font-[600] leading-[38px] text-richblack-5
                dark:text-[#e84949]">Join the millions playing to game with EventLogger for free</h1>
           <p className="mt-4 text-[1.125rem] leading-[1.625rem] text-richblack-5
@@ -144,7 +144,7 @@ const Signup = () => {
                         hover:scale-95 transition-all duration-200 dark:bg-[#e84949] dark:text-white">Create Account</button>
       </form>
 
-     <div className="w-[500px] mt-16">
+     <div className="md:w-2/5 w-full mt-16">
       <img src={Photo} className="rounded-[8px]"/>
      </div>
 

@@ -46,9 +46,10 @@ const Event = ({user, isLoggedIn}) => {
       };
 
   return (
-    <div className='w-11/12 max-w-maxContent mx-auto flex justify-between items-center gap-x-[80px] mt-4'>
+    <div className='w-full flex justify-center mt-4'>
         
-        <div className='w-[50%]'>
+       <div className='w-full max-w-5xl flex md:flex-row flex-col-reverse justify-between gap-14 px-5 sm:px-14 lg:px-0'>
+       <div className='md:w-1/2 w-full'>
             <h1 className='text-[#e37222] dark:text-richblack-700 text-[32px] font-[600] font-inter leading-[40px] pt-6'>{event.title}</h1>
                 <hr className="text-richblack-200 w-full"/>
                 <p className='text-[#f5f5f5] text-[16px] font-[500] font-inter leading-[24px] mt-6
@@ -107,28 +108,31 @@ const Event = ({user, isLoggedIn}) => {
                 ))}
         </div>
 
-        <div className='flex flex-col justify-center items-center'>
+        <div className='flex flex-col items-center mt-8 w-full md:w-1/2'>
 
-           <div className='flex justify-center w-[600px] h-[500px]'>
+           <div className='flex justify-center w-full'>
                <img src={event?.imageUrl} className='rounded-[8px]' />
            </div>
 
             <div className='flex font-bold text-3xl mt-6 justify-between gap-x-12'>
 
-                {isLoggedIn && event.userId === user.id &&  <div className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] px-[12px] py-[8px] 
+            
+                   {isLoggedIn && event.userId === user.id &&<Link className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
-                      duration-200 dark:bg-white dark:border-none'>
-                   <Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>
-                </div>}
+                      duration-200 dark:bg-white dark:border-none' to={`/update-event/${event._id}`}><FaRegEdit className='text-xl md:text-2xl'/></Link>}
+            
 
-                {isLoggedIn && event.userId === user.id && <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 px-[12px] py-[8px] 
+                <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
                        duration-200 dark:bg-white dark:border-none'>
-                    <button onClick={handleDelete}><MdDelete className=''/></button>
-                </div>}
+                    {isLoggedIn && event.userId === user.id &&<MdDelete onClick={handleDelete} className='text-xl md:text-2xl'/>}
+                </div>
             
             </div>
+            
         </div>
+       </div>
+        
     </div>
   )
 }
