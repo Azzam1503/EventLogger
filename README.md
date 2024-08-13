@@ -21,10 +21,11 @@ Event Logger is a event management platform where teachers can effortlessly crea
 
 ## Screenshots
 
-![Screenshot from 2022-12-28 14-52-49](/EventLogger/image/Screenshot%20(336).png)
-![Screenshot from 2022-12-28 14-53-20](/EventLogger/image/Screenshot%20(335).png)
-![Screenshot from 2022-12-28 14-52-49](/EventLogger/image/Screenshot%20(337).png)
-![Screenshot from 2022-12-28 14-53-20](/EventLogger/image/Screenshot%20(338).png)
+![Screenshot from 2024-04-15 14-52-49](https://ibb.co/Tm2HTDb)
+![Screenshot from 2024-04-15 14-53-20](https://ibb.co/F7f0d53)
+![Screenshot from 2024-04-15 14-52-49](https://ibb.co/64sSHrs)
+![Screenshot from 2024-04-15 14-53-20](https://ibb.co/sgMNb2b)
+![Screenshot from 2024-04-15 14-53-20](https://ibb.co/ThZYJ3Z)
 
 
 ## Configuration and running the Project
