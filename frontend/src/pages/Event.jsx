@@ -110,17 +110,12 @@ const Event = ({user, isLoggedIn}) => {
 
         <div className='flex flex-col items-center mt-8 w-full md:w-1/2'>
 
-<<<<<<< HEAD
            <div className='flex justify-center w-full'>
-=======
-           <div className='flex justify-center w-[600px] h-[500px]'>
->>>>>>> main
                <img src={event?.imageUrl} className='rounded-[8px]' />
            </div>
 
             <div className='flex font-bold text-3xl mt-6 justify-between gap-x-12'>
 
-<<<<<<< HEAD
             
                    {isLoggedIn && event.userId === user.id &&<Link className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
@@ -138,22 +133,6 @@ const Event = ({user, isLoggedIn}) => {
         </div>
        </div>
         
-=======
-                {isLoggedIn && event.userId === user.id &&  <div className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] px-[12px] py-[8px] 
-                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
-                      duration-200 dark:bg-white dark:border-none'>
-                   <Link to={`/update-event/${event._id}`}><FaRegEdit className=''/></Link>
-                </div>}
-
-                {isLoggedIn && event.userId === user.id && <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 px-[12px] py-[8px] 
-                    shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
-                       duration-200 dark:bg-white dark:border-none'>
-                    <button onClick={handleDelete}><MdDelete className=''/></button>
-                </div>}
-            
-            </div>
-        </div>
->>>>>>> main
     </div>
   )
 }
