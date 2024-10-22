@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://eventlogger.onrender.com',
+    origin: 'https://event-logger-five.vercel.app',
     credentials: true,
   })
 );
