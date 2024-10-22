@@ -5,12 +5,12 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectToDb = require("./config/connectToDb");
 const PORT = process.env.PORT || 3000;
-
+// 'https://event-logger-five.vercel.app'
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://event-logger-five.vercel.app',
+    origin: true,
     credentials: true,
   })
 );
