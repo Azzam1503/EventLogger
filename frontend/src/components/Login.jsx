@@ -60,12 +60,12 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
   };
 
   return (
-    <div className="w-11/12 max-w-maxContent flex justify-between mx-auto py-14 gap-x-12">
+    <div className="w-full max-w-maxContent flex md:flex-row flex-col justify-between mx-auto md:px-14 px-5 py-14 gap-x-12">
 
       <form onSubmit={handleSubmit}
-        className="flex flex-col gap-y-4 mt-[80px] w-[50%]">
+        className="flex flex-col gap-y-4 mt-3 md:mt-[80px] md:w-[50%] w-full">
 
-        <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">
+        <div className=" w-11/12 max-w-[450px] md:mx-0">
           <h1 className="text-[2.875rem] font-semibold leading-[2.375rem] text-richblack-5
                    dark:text-[#e84949] dark:font-[600] dark:text-[2.875rem]">Welcome Back</h1>
           <p className="mt-4 text-[1.125rem] leading-[1.625rem] text-richblack-5 dark:text-black">Build Events for today, tomorrow, and beyond.
@@ -131,7 +131,7 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
         <img src={Images} className="rounded-lg" />
       </div> */}
 
-      <div className="w-[33%] mt-[65px] dark:shadow-xl">
+      <div className="md:w-2/5 w-full mt-[65px] dark:shadow-xl">
         <img src={Images} className="rounded-lg" />
       </div>
       
