@@ -8,7 +8,7 @@ const ExportEvents = () => {
   const exportEvents = async () => {
     try {
       const res = await axios.get(
-        "https://eventlogger.onrender.com/event/downloadEvents",
+        "http://localhost:3000/event/downloadEvents",
         {
         params: {
                 fromDate,

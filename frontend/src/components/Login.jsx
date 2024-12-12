@@ -1,62 +1,29 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import Images from "../assets/images/games22.jpg"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { Link } from "react-router-dom";
+import useSignin from "../hooks/useSignin";
+
+
 
 const Login = ({isLoggedIn, setIsLoggedIn}) => {
-  const navigate = useNavigate();
+  const {loading, signin} = useSignin();
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [showPassword, setShowPassword] = useState(false)
 
   const inputChange = (e) => {
     const { name, value } = e.target;
     setLoginDetails((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    try {
-      const response = await axios.get(
-        "https://eventlogger.onrender.com/user/check-auth",
-        {
-          withCredentials: true,
-        }
-      );
-      if (response.statusText === "OK") {
-        navigate("/events");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://eventlogger.onrender.com/user/sign-in",
-        loginDetails,
-        {
-          withCredentials: true,
-        }
-      );
-
-      if(response.status === 200){
-        setIsLoggedIn(true);
-        navigate("/");
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
+    await signin(loginDetails);
   };
 
   return (
@@ -141,3 +108,25 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
 };
 
 export default Login;
+
+
+
+// useEffect(() => {
+//   checkAuth();
+// }, []);
+
+// const checkAuth = async () => {
+//   try {
+//     const response = await axios.get(
+//       "http://localhost:3000/user/check-auth",
+//       {
+//         withCredentials: true,
+//       }
+//     );
+//     if (response.statusText === "OK") {
+//       navigate("/events");
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

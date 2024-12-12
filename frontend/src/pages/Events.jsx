@@ -19,7 +19,7 @@ const Events = () => {
   }, []);
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("https://eventlogger.onrender.com/event/allEvents");
+      const response = await axios.get("http://localhost:3000/event/allEvents");
       setEvents(response.data.events);
       setFilteredEvents(response.data.events);
     } catch (error) {

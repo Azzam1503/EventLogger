@@ -15,7 +15,7 @@ const Event = ({user, isLoggedIn}) => {
     const {id} = useParams();
 
     const fetchEvent = async () => {
-        const response = await axios.get(`https://eventlogger.onrender.com/event/get-event/${id}`);
+        const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
         console.log(response.data.event.userId);
         setEvent(response.data.event);
     }
@@ -34,7 +34,7 @@ const Event = ({user, isLoggedIn}) => {
             }
                     
           const response = await axios.delete(
-            `https://eventlogger.onrender.com/event/delete-event/${id}`,{
+            `http://localhost:3000/event/delete-event/${id}`,{
                 withCredentials: true
             }
           );

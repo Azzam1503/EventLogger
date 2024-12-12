@@ -20,7 +20,7 @@ const UpdateEvent = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`hhttps://eventlogger.onrender.com/event/get-event/${id}`);
+        const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
         setEventData(response.data.event);
       } catch (error) {
         console.error("Error fetching event data:", error);
@@ -77,7 +77,7 @@ const UpdateEvent = () => {
         formData.append(`speakers[${index}][about]`, speaker.about);
       });
 
-      const response = await axios.put(`https://eventlogger.onrender.com/event/update-event/${id}`, formData, {
+      const response = await axios.put(`http://localhost:3000/event/update-event/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from "axios";
 import ThemeToggle from './ThemeToggle';
 import { NavbarDrawer } from './NavbarDrawer';
+import UserContext from '../context/UserContext';
 
-const Navbar = (props) => {
-
+const Navbar = () => {
+    const {user, setUser} = useContext(UserContext);
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname);
     }
 
-    let isLoggedIn = props.isLoggedIn
-    let setIsLoggedIn = props.setIsLoggedIn
-    const check = () => {
-        console.log(isLoggedIn);
-    }
+    let isLoggedIn = user !== null;
 
     const handleLogout = async () => {
         try {
@@ -23,7 +20,8 @@ const Navbar = (props) => {
                 withCredentials: true
             });
             console.log(response);
-            setIsLoggedIn(false);
+            setUser(null);
+            localStorage.removeItem("user");
         } catch (error) {
             console.log(error)
         }
@@ -107,7 +105,7 @@ const Navbar = (props) => {
 
                 </div>
 
-                <NavbarDrawer props={props} />
+                <NavbarDrawer />
             </div>
         </div>
     )

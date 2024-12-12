@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import Login from "../components/Login";
+import { Navigate} from "react-router-dom"
+import UserContext from "../context/UserContext";
 
-const LoginPage = ({isLoggedIn, setIsLoggedIn}) => {
+const LoginPage = () => {
+  const {user} = useContext(UserContext);
+  console.log(user);
   return (
     <div>
-      <Login  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+      {user === null ? <Login /> : <Navigate to={"/"} />}
     </div>
   );
 };

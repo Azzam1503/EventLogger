@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Events from "./pages/Events";
 import Signup from "./components/Signup";
 import LoginPage from "./pages/LoginPage";
@@ -10,65 +9,26 @@ import Event from "./pages/Event";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ExportEvents from "./pages/ExportEvents";
-import axios from "axios";
 import "./index.css";
+import { useContext } from "react";
+import UserContext from "./context/UserContext";
+
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn ] = useState(null);
-  const [user, setUser] = useState({
-    id: null,
-    name: "",
-    email: ""
-  })
-
-  useEffect(() => {
-    const auth = async () => {
-      try {
-        const res =  await axios.get("https://eventlogger.onrender.com/user/check-auth",{withCredentials: true});
-        const {email, _id, fullName} = res.data;
-        console.log(res)
-        if(res.status === 200){
-          setIsLoggedIn(true);
-          setUser({
-            email,
-            id: _id,
-            name: fullName
-          })
-          console.log(res);
-        }else{
-          setIsLoggedIn(false)
-        }
-      } catch (error) {
-        if (error.response && error.response.status === 401) {
-          // If 401 response is received, user is not authenticated
-          setIsLoggedIn(false);
-        } else {
-          // Handle other errors
-          console.error("Error:", error);
-        }
-      }
-    }
-
-    auth();
-  },[])
-
-  // if (isLoggedIn === null) {
-  //   return <div>Loading...</div>;
-  // }
-   
+  const {user} = useContext(UserContext);
   return (
     <div className="w-full min-h-screen bg-richblack-900 dark:bg-[#ede9fe]">
-    <Navbar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn} />
+    <Navbar />
         <Routes>
-          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
-          <Route path="/exportEvents" element={<ExportEvents isLoggedIn={isLoggedIn} />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/exportEvents" element={<ExportEvents />} />
           <Route path="/events" element={<Events user={user} />} />
-          <Route path="/register" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
-          <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
+          <Route path="/register" element={<Signup/>} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/user-profile" element={<UserProfile user={user} />} />
-          <Route path="/create-event" element={<CreateEvent isLoggedIn={isLoggedIn} />} />
+          <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/update-event/:id" element={<UpdateEvent />} />
-          <Route path="/event/:id" element={<Event user={user} isLoggedIn={isLoggedIn}  />} />
+          <Route path="/event/:id" element={<Event />} />
         </Routes>
     </div>
   );

@@ -7,8 +7,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import ThemeToggle from './ThemeToggle';
 import toast from 'react-hot-toast'
 import axios from "axios";
+import { useContext } from 'react';
+import UserContext from '../context/UserContext';
 
-export const NavbarDrawer = (props) =>  {
+export const NavbarDrawer = () =>  {
+  const {user, setUser} = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const handleClose = () => setIsOpen(false);
@@ -20,11 +23,7 @@ export const NavbarDrawer = (props) =>  {
     return matchPath({ path: route }, location.pathname);
 }
 
-let isLoggedIn = props.isLoggedIn
-let setIsLoggedIn = props.setIsLoggedIn
-const check = () => {
-    console.log(isLoggedIn);
-}
+let isLoggedIn = user !== null;
 
 const handleLogout = async () => {
     try {
@@ -32,7 +31,8 @@ const handleLogout = async () => {
             withCredentials: true
         });
         console.log(response);
-        setIsLoggedIn(false);
+        setUser(null);
+        localStorage.removeItem("user");
     } catch (error) {
         console.log(error)
     }

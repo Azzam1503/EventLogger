@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoTimer } from "react-icons/io5";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
 import { MdDeleteForever } from "react-icons/md";
 import Spinner from "../components/Spinner";
+import UserContext from "../context/UserContext";
 
 
-const CreateEvent = ({ isLoggedIn }) => {
+const CreateEvent = () => {
   const navigate = useNavigate();
-
+  const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
   const [eventFormData, setEventFormData] = useState({
@@ -30,10 +31,10 @@ const CreateEvent = ({ isLoggedIn }) => {
   });
   const [speakers, setSpeakers] = useState([]);
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (user === null) {
       navigate("/login");
     }
-  }, [isLoggedIn]);
+  }, []);
 
   const handleFormDataChange = (e) => {
     const { name, value } = e.target;
@@ -72,7 +73,7 @@ const CreateEvent = ({ isLoggedIn }) => {
       }
 
       const response = await axios.post(
-        "https://eventlogger.onrender.com/event/create-event",
+        "http://localhost:3000/event/create-event",
         formData,
         {
           headers: {

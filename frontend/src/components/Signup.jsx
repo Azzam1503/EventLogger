@@ -3,9 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import Photo from "../assets/images/games22.jpg";
+import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const {loading, signup} = useSignup();
   const [signupFormData, setSignUpFormData] = useState({
     fullName: "",
     email: "",
@@ -14,8 +16,6 @@ const Signup = () => {
 
   const [showPassword, setShowPassword] = useState(false)
 
-  const [image, setImage] = useState("");
-
   useEffect(() => {
     checkAuth();
   }, []);
@@ -23,7 +23,7 @@ const Signup = () => {
   const checkAuth = async () => {
     try {
       const response = await axios.get(
-        "https://eventlogger.onrender.com/user/check-auth",
+        "http://localhost:3000/user/check-auth",
         {
           withCredentials: true,
         }
@@ -44,27 +44,7 @@ const Signup = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const formData = new FormData();
-      formData.append("avatar", image);
-      formData.append("fullName", signupFormData.fullName);
-      formData.append("email", signupFormData.email);
-      formData.append("password", signupFormData.password);
-      console.log(image)
-      const response = await axios.post(
-        "https://eventlogger.onrender.com/user/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    await signup(signupFormData);
   };
 
   return (
