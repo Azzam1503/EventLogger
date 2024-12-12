@@ -8,11 +8,9 @@ const createUser = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
     let avatarPic;
-    console.log(req.file);
 
     if (req.file != undefined) {
       avatarPic = await uploadOnCloudinary(req.file.path);
-      console.log(avatarPic);
     }
     const ifAlreadyExists = await User.findOne({ email });
     if (ifAlreadyExists) {
@@ -41,20 +39,20 @@ const createUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: "No email found" });
     }
-
+    
     const comparedPassword = bcrypt.compareSync(password, user.password);
     if (!comparedPassword) {
-      return res.status(401).json({ message: "Incorrect password" });
+      return res.status(401).json({ message: "Incorrect password"});
     }
 
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     const token = jwt.sign({ sub: user._id, exp }, process.env.JWT_SECRET);
-
+  
     res.cookie("Authorization", token, {
       expires: new Date(exp),
       httpOnly: true,
@@ -62,7 +60,7 @@ const loginUser = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
     });
 
-    res.status(200).json({ msg: "Login successfully" });
+    res.status(200).json({ message: "Login successfully", id:user._id, fullName: user.fullName, email: user.email, imageUrl: user.imageUrl});
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: error });
@@ -91,7 +89,6 @@ const checkAuth = (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  console.log(req.user);
   try {
     return res.status(200).json({ user: req.user });
   } catch (error) {

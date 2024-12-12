@@ -8,13 +8,22 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
+
+let allowedOrigin = "http://localhost:5173";
+
+if(process.NODE_ENV === "production") allowedOrigin = 'https://event-logger-five.vercel.app/';
+
 app.use(
   cors({
-    origin: 'https://event-logger-gmkxrrjv8-azzam1503s-projects.vercel.app',
+    origin: allowedOrigin,
     credentials: true,
   })
 );
 connectToDb();
+
+app.get("/", (req, res) =>{
+  res.send("Hello there!");
+})
 app.use("/user", require("./routes/user"));
 app.use("/event", require("./routes/event"));
 app.get("/", (req, res) => {
