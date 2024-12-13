@@ -122,11 +122,11 @@ const Event = () => {
                       duration-200 dark:bg-white dark:border-none' to={`/update-event/${event._id}`}><FaRegEdit className='text-xl md:text-2xl'/></Link>}
             
 
-                <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 p-2 
+            {user && event.userId === user.id && <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
                        duration-200 dark:bg-white dark:border-none'>
-                    {user && event.userId === user.id &&<MdDelete onClick={handleDelete} className='text-xl md:text-2xl'/>}
-                </div>
+                    <MdDelete onClick={handleDelete} className='text-xl md:text-2xl'/>
+                </div>}
             
             </div>
             

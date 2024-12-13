@@ -135,7 +135,7 @@ const CreateEvent = () => {
         className="flex flex-col gap-y-4 mt-[20px] w-full md:w-[50%]"
       >
         <h1 className="text-[3rem] font-semibold leading-[2.375rem] text-yellow-50 dark:text-[#e84949] dark:shadow-md dark:py-3 dark:w-full">
-          Create Event<spam className="">..</spam>
+          Create Event<span className="">..</span>
         </h1>
         <hr className="text-yellow-200 dark:text-[#e84949] max-w-[625px]" />
         <br/>
@@ -324,9 +324,9 @@ const CreateEvent = () => {
               className="bg-richblack-800 px-[12px] py-[8px] flex gap-6 rounded-[8px] dark:bg-white"
             >
               <div className="w-[85%] py-2 flex flex-col space-y-3">
-                <h className="text-richblack-5 dark:text-richblack-700 font-[600] text-[24px]">
+                <h3 className="text-richblack-5 dark:text-richblack-700 font-[600] text-[24px]">
                   {speaker.name}
-                </h>
+                </h3>
                 <p className="text-richblack-25 dark:text-richblack-600 w-[90%]">{speaker.about}</p>
               </div>
 
