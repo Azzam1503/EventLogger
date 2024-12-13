@@ -79,7 +79,6 @@ const logoutUser = (req, res) => {
 
 const checkAuth = (req, res) => {
   try {
-    console.log(req.user);
     const user = req.user;
     return res.status(200).json(user);
   } catch (error) {

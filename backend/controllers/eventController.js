@@ -48,13 +48,10 @@ const updateEvent = async (req, res) => {
     let updatedImage;
     if(req.file != undefined){
       updatedImage = await uploadOnCloudinary(req.file.path);
-      console.log(updatedImage);
     }
 
     const { id } = req.params;
     const check = await Event.findById(id);
-    console.log("check events", check.userId);
-    console.log(req.user._id);
     
     if (JSON.stringify(check.userId) !== JSON.stringify(req.user._id)) {
       return res.status(403).json({ message: "You are not authorized to update this event" });
@@ -87,7 +84,6 @@ const deleteEvent = async (req, res) => {
   try {
     const { id } = req.params;
     const check = await Event.findById(id);
-    console.log("delte....", req.user)
     if (JSON.stringify(check.userId) !== JSON.stringify(req.user._id)) {
       return res.status(403).json({ message: "You are not authorized to update this event" });
     }
@@ -148,7 +144,6 @@ const downloadEvents = async (req, res) => {
       filter.department = department;
     }
 
-    console.log('Filter:', filter);
     const events = await Event.find(filter).select("-imageUrl -description -speakers -userId -_id -showOnHomagePage -createdAt -updatedAt -__v");
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Events');
