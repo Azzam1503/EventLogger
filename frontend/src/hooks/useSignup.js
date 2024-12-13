@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import baseURL from "../config";
 
 const useSignup = () => {
     const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ const useSignup = () => {
         try {
             setLoading(true);
             const response = await axios.post(
-                "http://localhost:3000/user/register",
+                `${baseURL}/user/register`,
                 {fullName, email, password},
                 {
                   withCredentials: true,

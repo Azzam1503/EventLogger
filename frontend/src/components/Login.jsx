@@ -7,7 +7,7 @@ import useSignin from "../hooks/useSignin";
 
 
 
-const Login = ({isLoggedIn, setIsLoggedIn}) => {
+const Login = () => {
   const {loading, signin} = useSignin();
   const [loginDetails, setLoginDetails] = useState({
     email: "",
@@ -110,23 +110,3 @@ const Login = ({isLoggedIn, setIsLoggedIn}) => {
 export default Login;
 
 
-
-// useEffect(() => {
-//   checkAuth();
-// }, []);
-
-// const checkAuth = async () => {
-//   try {
-//     const response = await axios.get(
-//       "http://localhost:3000/user/check-auth",
-//       {
-//         withCredentials: true,
-//       }
-//     );
-//     if (response.statusText === "OK") {
-//       navigate("/events");
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

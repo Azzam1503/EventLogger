@@ -16,26 +16,9 @@ const Signup = () => {
 
   const [showPassword, setShowPassword] = useState(false)
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:3000/user/check-auth",
-        {
-          withCredentials: true,
-        }
-      );
-      if (response.statusText === "OK") {
-        navigate("/");
-      }
-    } catch (error) {
-      navigate("/register")
-      console.log(error);
-    }
-  };
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

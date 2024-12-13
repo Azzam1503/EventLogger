@@ -30,18 +30,18 @@ const TextCard = () => {
         },
         {
             // title:"June-2002 - 2020",
+            image: "https://i.ibb.co/SdpKn8D/azzaamimg.jpg",
+            heading: "AZZAM UDDIN",
+            title1: "Full Stack Web Developer",
+            description: "Hello! My name is Azzam Uddin and I a full stack developer and I have build this website from scratch",
+        },
+        {
+            // title:"June-2002 - 2020",
             image: "https://i.ibb.co/bX3ph3h/IMG-20230319-011945-017.jpg",
             heading: "VIVEK GUPTA",
             title1: "Full Stack Web Developer",
             description: "Hi Everyone My name is Vivek Gupta I am a Full Stack Web Developer Currently I am working on React and Making Beautiful UI-UX are my fey features"
             // description:"I Am A B-Tech 4th year computer science student it Rohilkhand University Bareilly currently reading the essay in CP and learning web development.!!",
-        },
-        {
-            // title:"June-2002 - 2020",
-            image: "https://i.ibb.co/SdpKn8D/azzaamimg.jpg",
-            heading: "AZZAM UDDIN",
-            title1: "Full Stack Web Developer",
-            description: "There are many variations of passages of Lorem Ipsumav ailable, but the majority have suffered alteration in some11",
         },
         {
             // title:"June-2002 - 2020",

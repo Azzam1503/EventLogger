@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios";
 import {useParams, Link, useNavigate} from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
@@ -8,8 +8,11 @@ import { BsPersonLinesFill } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
 import { MdDescription, MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import UserContext from '../context/UserContext';
 
-const Event = ({user, isLoggedIn}) => {
+
+const Event = () => {
+    const {user} = useContext(UserContext);
     const [event, setEvent] = useState({})
     const navigate = useNavigate();
     const {id} = useParams();
@@ -21,8 +24,6 @@ const Event = ({user, isLoggedIn}) => {
     }
 
     useEffect(() =>{
-        console.log("user",user)
-        console.log(isLoggedIn)
         fetchEvent();
     },[])
 
@@ -117,7 +118,7 @@ const Event = ({user, isLoggedIn}) => {
             <div className='flex font-bold text-3xl mt-6 justify-between gap-x-12'>
 
             
-                   {isLoggedIn && event.userId === user.id &&<Link className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] p-2 
+                   {user && event.userId === user.id &&<Link className='border border-richblack-700 rounded-[8px] bg-richblack-800  text-[#006699] p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
                       duration-200 dark:bg-white dark:border-none' to={`/update-event/${event._id}`}><FaRegEdit className='text-xl md:text-2xl'/></Link>}
             
@@ -125,7 +126,7 @@ const Event = ({user, isLoggedIn}) => {
                 <div className='border border-richblack-700 rounded-[8px] bg-richblack-800 text-pink-400 p-2 
                     shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] first-line: hover:shadow-none hover:scale-95 transition-all 
                        duration-200 dark:bg-white dark:border-none'>
-                    {isLoggedIn && event.userId === user.id &&<MdDelete onClick={handleDelete} className='text-xl md:text-2xl'/>}
+                    {user && event.userId === user.id &&<MdDelete onClick={handleDelete} className='text-xl md:text-2xl'/>}
                 </div>
             
             </div>

@@ -5,7 +5,7 @@ import UserContext from "../context/UserContext";
 
 const LoginPage = () => {
   const {user} = useContext(UserContext);
-  console.log(user);
+  
   return (
     <div>
       {user === null ? <Login /> : <Navigate to={"/"} />}

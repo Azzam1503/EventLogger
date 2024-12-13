@@ -3,7 +3,7 @@ import  UserContext  from"../context/UserContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import baseURL from "../config";
 
 const useSignin = () => {
     const {setUser} = useContext(UserContext);
@@ -19,7 +19,7 @@ const useSignin = () => {
         try {
             setLoading(true);
             const response = await axios.post(
-                "http://localhost:3000/user/sign-in",
+                `${baseURL}/user/sign-in`,
                 {email, password},
                 {
                     withCredentials: true

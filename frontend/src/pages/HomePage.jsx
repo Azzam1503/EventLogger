@@ -73,13 +73,12 @@ const HomePage = () => {
                   className="text-[#e37222] md:text-6xl text-3xl font-[600] font-inter leading-[72px] group-hover:text-yellow-300
                                     group-hover:dark:text-[#e84949]"
                 />
-                <Link
-                  to={"/events"}
+                <span
                   className="text-[#e37222] group-hover:text-richblack-50
                              group-hover:dark:text-richblack-500"
                 >
                   Search Events
-                </Link>
+                </span>
                 </div>
             </Link>
 
@@ -88,8 +87,8 @@ const HomePage = () => {
                                        group hover:scale-95 transition-all duration-200 -mt-6'>
                 <FaUserAlt className='text-[#e37222] md:text-6xl text-3xl font-[600] font-inter leading-[72px] group-hover:text-yellow-300
                                   group-hover:dark:text-[#e84949]'/>
-                <Link to={"/user-profile"} className='text-[#e37222] group-hover:text-richblack-50
-                        group-hover:dark:text-richblack-500'>My Event</Link>
+                <span  className='text-[#e37222] group-hover:text-richblack-50
+                        group-hover:dark:text-richblack-500'>My Event</span>
               </div>
             </Link>
 
@@ -98,8 +97,8 @@ const HomePage = () => {
                               group hover:scale-95 transition-all duration-200'>
                 <FaFolderOpen className='text-[#006699] md:text-6xl text-3xl font-[600] font-inter leading-[72px] group-hover:text-yellow-200
                               group-hover:dark:text-[#e84949]'/>
-                <Link to={"/exportEvents"} className='text-[#006699] group-hover:text-richblack-50
-                        group-hover:dark:text-richblack-500'>Export Events</Link>
+                <span className='text-[#006699] group-hover:text-richblack-50
+                        group-hover:dark:text-richblack-500'>Export Events</span>
               </div>
             </Link>
 
@@ -112,13 +111,12 @@ const HomePage = () => {
                   className="text-[#669933] md:text-6xl text-3xl  font-[600] font-inter leading-[72px] group-hover:text-yellow-300
                                     group-hover:dark:text-[#e84949]"
                 />
-                <Link
-                  to={"/create-event"}
+                <span
                   className="text-[#669933] group-hover:text-richblack-50
                         group-hover:dark:text-richblack-500"
                 >
                   Create Event
-                </Link>
+                </span>
               </div>
             </Link>
           </div>

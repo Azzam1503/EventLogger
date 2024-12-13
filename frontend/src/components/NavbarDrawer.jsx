@@ -1,6 +1,4 @@
-
-"use client";
-import { NavLink, useLocation,Link } from 'react-router-dom'
+import { NavLink, useLocation,Link, useNavigate } from 'react-router-dom'
 import { Button, Drawer } from "flowbite-react";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -9,13 +7,14 @@ import toast from 'react-hot-toast'
 import axios from "axios";
 import { useContext } from 'react';
 import UserContext from '../context/UserContext';
+import baseURL from '../config';
 
 export const NavbarDrawer = () =>  {
   const {user, setUser} = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const handleClose = () => setIsOpen(false);
-
+  const navigate = useNavigate();
   console.log("router", location?.pathname)
 
 
@@ -27,7 +26,7 @@ let isLoggedIn = user !== null;
 
 const handleLogout = async () => {
     try {
-        const response = await axios.post("http://localhost:3000/user/logout", {}, {
+        const response = await axios.post(`${baseURL}/user/logout`, {}, {
             withCredentials: true
         });
         console.log(response);
@@ -81,41 +80,34 @@ const handleLogout = async () => {
 
             <div className='text-[#dbddea] flax space-x-6'>
               {!isLoggedIn &&
-                <Link to="/login">
                   <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100
-             dark:bg-[#e84949] dark:text-richblack-5'>
+             dark:bg-[#e84949] dark:text-richblack-5' onClick={() => navigate("/login")}>
                     Login
                   </button>
-                </Link>
               }
               {!isLoggedIn &&
-                <Link to="/register">
                   <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100
-            dark:bg-[#e84949] dark:text-richblack-5'>
+            dark:bg-[#e84949] dark:text-richblack-5' onClick={() => navigate("/register")}>
                     Signup
                   </button>
-                </Link>
               }
               {isLoggedIn &&
-                <Link to="/user-profile">
                   <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100
-             dark:bg-[#e84949] dark:text-richblack-5'>
+             dark:bg-[#e84949] dark:text-richblack-5' onClick={() => navigate("/user-profile")}>
                     Dashboard
                   </button>
-                </Link>
               }
               {isLoggedIn &&
-                <Link to="/">
                   <button className='rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100
                dark:bg-[#e84949] dark:text-richblack-5'
                     onClick={() => {
                       handleLogout();
-                      toast.success("Logged Out")
+                      toast.success("Logged Out");
+                      navigate("/");
                     }}
                   >
                     Log Out
                   </button>
-                </Link>
               }
 
             </div>
