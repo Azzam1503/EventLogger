@@ -8,6 +8,7 @@ import { FaFolderOpen } from "react-icons/fa6";
 import { IoIosAddCircle } from "react-icons/io";
 import Footer from "../components/Footer";
 import TextCard from "../components/TextCard";
+import baseURL from "../config";
 
 const HomePage = () => {
   const [pastEvents, setPastEvents] = useState([]);
@@ -17,7 +18,7 @@ const HomePage = () => {
   const fetchHomePageEvents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/event/homepage-events"
+        `${baseURL}/event/homepage-events`
       );
       setPastEvents(response.data.pastEvents);
       setUpcomingEvents(response.data.upcomingEvents);

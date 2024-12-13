@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import baseURL from "../config";
 
 const ExportEvents = () => {
     const [fromDate, setFromDate] = useState("");
@@ -8,7 +9,7 @@ const ExportEvents = () => {
   const exportEvents = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/event/downloadEvents",
+        `${baseURL}/event/downloadEvents`,
         {
         params: {
                 fromDate,
@@ -18,7 +19,6 @@ const ExportEvents = () => {
           responseType: "blob",
         }
       );
-      console.log(res);
       // Create a URL for the blob object
       const url = window.URL.createObjectURL(new Blob([res.data]));
 

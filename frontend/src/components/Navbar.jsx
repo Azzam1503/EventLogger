@@ -21,7 +21,6 @@ const Navbar = () => {
             const response = await axios.post(`${baseURL}/user/logout`, {}, {
                 withCredentials: true
             });
-            console.log(response);
             setUser(null);
             localStorage.removeItem("user");
         } catch (error) {

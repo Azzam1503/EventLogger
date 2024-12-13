@@ -6,6 +6,7 @@ import { IoColorFilter } from "react-icons/io5";
 
 
 import { Table } from "flowbite-react";
+import baseURL from "../config";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -19,7 +20,7 @@ const Events = () => {
   }, []);
   const fetchEvents = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/event/allEvents");
+      const response = await axios.get(`${baseURL}/event/allEvents`);
       setEvents(response.data.events);
       setFilteredEvents(response.data.events);
     } catch (error) {
@@ -46,7 +47,6 @@ const Events = () => {
     }
 
     setFilteredEvents(filteredEvents);
-    console.log(filteredEvents);
   };
 
   const handleFromDateChange = (e) => {

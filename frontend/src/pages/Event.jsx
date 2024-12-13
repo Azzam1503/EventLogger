@@ -9,6 +9,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { MdDescription, MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import UserContext from '../context/UserContext';
+import baseURL from '../config';
 
 
 const Event = () => {
@@ -18,8 +19,7 @@ const Event = () => {
     const {id} = useParams();
 
     const fetchEvent = async () => {
-        const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
-        console.log(response.data.event.userId);
+        const response = await axios.get(`${baseURL}/event/get-event/${id}`);
         setEvent(response.data.event);
     }
 
@@ -35,12 +35,11 @@ const Event = () => {
             }
                     
           const response = await axios.delete(
-            `http://localhost:3000/event/delete-event/${id}`,{
+            `${baseURL}/event/delete-event/${id}`,{
                 withCredentials: true
             }
           );
           navigate("/");
-          console.log("event deleted successfully");
         } catch (error) {
           console.log("error while deleting the event");
         }

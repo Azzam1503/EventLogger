@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import baseURL from "../config";
 
 const UpdateEvent = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const UpdateEvent = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/event/get-event/${id}`);
+        const response = await axios.get(`${baseURL}/event/get-event/${id}`);
         setEventData(response.data.event);
       } catch (error) {
         console.error("Error fetching event data:", error);
@@ -77,7 +78,7 @@ const UpdateEvent = () => {
         formData.append(`speakers[${index}][about]`, speaker.about);
       });
 
-      const response = await axios.put(`http://localhost:3000/event/update-event/${id}`, formData, {
+      const response = await axios.put(`${baseURL}/event/update-event/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

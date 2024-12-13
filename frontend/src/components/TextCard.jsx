@@ -10,7 +10,6 @@ const TextCard = () => {
 
     const handleNav = (direction) => {
         if (navRef.current) {
-            console.log("hello");
             const scrollAmount = direction === "left" ? -344 : 344;
             navRef.current.scrollBy({
                 left: scrollAmount,

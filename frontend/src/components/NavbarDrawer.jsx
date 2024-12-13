@@ -15,7 +15,6 @@ export const NavbarDrawer = () =>  {
   const location = useLocation();
   const handleClose = () => setIsOpen(false);
   const navigate = useNavigate();
-  console.log("router", location?.pathname)
 
 
   const matchRoute = (route) => {
@@ -29,7 +28,6 @@ const handleLogout = async () => {
         const response = await axios.post(`${baseURL}/user/logout`, {}, {
             withCredentials: true
         });
-        console.log(response);
         setUser(null);
         localStorage.removeItem("user");
     } catch (error) {

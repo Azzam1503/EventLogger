@@ -3,6 +3,7 @@ import User from "../components/User";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import baseURL from "../config";
 
 const UserProfile = ({user}) => {
   const [eventType, setEventType] = useState("upcoming");
@@ -10,7 +11,7 @@ const UserProfile = ({user}) => {
   const [pastEvents, setPastEvents] = useState([]);
   const fetchEvents = async () =>{
     try {
-      const response = await axios.get("http://localhost:3000/user/events", {
+      const response = await axios.get(`${baseURL}/user/events`, {
         withCredentials: true
       });
       setPastEvents(response.data.pastEvents.reverse());

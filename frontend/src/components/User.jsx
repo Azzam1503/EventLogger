@@ -2,16 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import baseURL from "../config";
 
 const User = ({user}) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const getUser = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/user/profile`, {
+      const response = await axios.get(`${baseURL}/user/profile`, {
         withCredentials: true,
       });
-      console.log(response)
       setUserData(response.data.user);
     } catch (error) {
       navigate("/login");

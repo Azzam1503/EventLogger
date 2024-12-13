@@ -6,6 +6,7 @@ import { IoIosAdd } from "react-icons/io";
 import { MdDeleteForever } from "react-icons/md";
 import Spinner from "../components/Spinner";
 import UserContext from "../context/UserContext";
+import baseURL from "../config";
 
 
 const CreateEvent = () => {
@@ -23,7 +24,6 @@ const CreateEvent = () => {
   });
 
   const [image, setImage] = useState("");
-  console.log(image);
   const [speaker, setSpeaker] = useState({
     id: null,
     name: "",
@@ -73,7 +73,7 @@ const CreateEvent = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:3000/event/create-event",
+        `${baseURL}/event/create-event`,
         formData,
         {
           headers: {
