@@ -8,9 +8,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
-
 let allowedOrigin = "http://localhost:5173";
-if(process.env.NODE_ENV === "production") allowedOrigin = 'https://event-logger-five.vercel.app/';
+if(process.env.NODE_ENV === "production") allowedOrigin = 'https://event-logger-five.vercel.app';
 
 app.use(
   cors({
