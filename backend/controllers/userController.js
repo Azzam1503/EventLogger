@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
     res.cookie("Authorization", token, {
       expires: new Date(exp),
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "Lax",
       secure: process.env.NODE_ENV === "production",
     });
 
