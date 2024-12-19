@@ -36,28 +36,12 @@ const TextCard = () => {
         },
         {
             // title:"June-2002 - 2020",
-            image: "https://i.ibb.co/bX3ph3h/IMG-20230319-011945-017.jpg",
+            image: "https://ibb.co/BfwB17B",
             heading: "VIVEK GUPTA",
             title1: "Full Stack Web Developer",
             description: "Hi Everyone My name is Vivek Gupta I am a Full Stack Web Developer Currently I am working on React and Making Beautiful UI-UX are my fey features"
             // description:"I Am A B-Tech 4th year computer science student it Rohilkhand University Bareilly currently reading the essay in CP and learning web development.!!",
-        },
-        {
-            // title:"June-2002 - 2020",
-            image: "https://i.ibb.co/QKWcDsb/jp.jpg",
-            heading: "Jay PRATAP SINGH",
-            title1: "Front End Developer",
-            description: "Hi Everyone My name is Vivek Gupta I am a Full Stack Web Developer Currently I am working on React and Making Beautiful UI-UX are my fey features"
-            // description:"I Am A B-Tech 4th year computer science student it Rohilkhand University Bareilly currently reading the essay in CP and learning web development.!!",
-        },
-        {
-            // title:"June-2002 - 2020",
-            image: "https://i.ibb.co/3sGQwKQ/kapil.jpg",
-            heading: "KAPIL GUPTA",
-            title1: "Front End Developer",
-            description: "Hi Everyone My name is Vivek Gupta I am a Full Stack Web Developer Currently I am working on React and Making Beautiful UI-UX are my fey features"
-            // description:"I Am A B-Tech 4th year computer science student it Rohilkhand University Bareilly currently reading the essay in CP and learning web development.!!",
-        },
+        }
     ]
     return (
         <>
