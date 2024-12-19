@@ -36,7 +36,7 @@ const TextCard = () => {
         },
         {
             // title:"June-2002 - 2020",
-            image: "https://ibb.co/BfwB17B",
+            image: "https://i.ibb.co/zxs754k/vivek.jpg",
             heading: "VIVEK GUPTA",
             title1: "Full Stack Web Developer",
             description: "Hi Everyone My name is Vivek Gupta I am a Full Stack Web Developer Currently I am working on React and Making Beautiful UI-UX are my fey features"
@@ -104,9 +104,6 @@ const TextCard = () => {
 };
 
 export default TextCard;
-
-
-
 
 // const card = [
 //     {
