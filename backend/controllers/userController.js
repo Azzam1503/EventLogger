@@ -52,11 +52,11 @@ const loginUser = async (req, res) => {
 
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     const token = jwt.sign({ sub: user._id, exp }, process.env.JWT_SECRET);
-  
+    
     res.cookie("Authorization", token, {
       expires: new Date(exp),
       httpOnly: true,
-      sameSite: "none",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
     });
 
