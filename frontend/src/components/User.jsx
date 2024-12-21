@@ -14,8 +14,8 @@ const User = ({user}) => {
       });
       setUserData(response.data.user);
     } catch (error) {
-      navigate("/login");
       console.log(error);
+      navigate("/login");
     }
   };
   useEffect(() => {

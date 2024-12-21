@@ -85,7 +85,6 @@ const UpdateEvent = () => {
         withCredentials: true
       });
       navigate(`/event/${id}`);
-      console.log("Event updated successfully:", response.data);
     } catch (error) {
       console.error("Error updating event:", error);
     }

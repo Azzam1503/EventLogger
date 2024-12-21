@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import User from "../components/User";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import baseURL from "../config";
 
@@ -9,6 +9,7 @@ const UserProfile = ({user}) => {
   const [eventType, setEventType] = useState("upcoming");
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
+  const navigate = useNavigate();
   const fetchEvents = async () =>{
     try {
       const response = await axios.get(`${baseURL}/user/events`, {
@@ -20,6 +21,7 @@ const UserProfile = ({user}) => {
     }
   }
   useEffect(() =>{
+    if(user == null) navigate("/login");
     fetchEvents();
   },[])
   return (
